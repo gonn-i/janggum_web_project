@@ -6,92 +6,85 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>장금이 요리백서</title>
         {% load static %}
-        <link rel="stylesheet" href="{% static 'css/profile.css'%}" />
+        <link rel="stylesheet" href="{% static 'css/recipe_list.css'%}" />
         {% include 'posts/header_base.html' %}
         {% if posts %}
         <!-- posts가 있을 때 UI 코드 -->
         <div class="sort_search">
-            <div style="font-size: larger">내 레시피</div>
+            <div div class="list_title">내 레시피</div>
         </div>
-
         <div class="both_container">
             <div class="all_recipe_box">
                 {% for post in page_obj %}
-                <article class="backgorundcolor">
+                <article class="recipe_back">
                     <div class="each_recipe">
                         {% if post.number >= 10 %}
                             <div class="recipe_content" id="recipe_janggum_back" onclick="onClickDetail({{post.id}})"> 
-                                <button style="border: 0; position: absolute;"
-                                    class="store_{{post.id}}" onclick="onClickStore({{post.id}})">
+                                <button class="store_{{post.id}}" onclick="onClickStore({{post.id}})">
                                     <i class="fa-solid fa-bookmark">
                                         <div class="store_or_not_{{post.id}}" id="store_text">찜하기</div>
                                     </i>
                                 </button>
                                 <div class="recipe_title">
-                                    <button style="font-family: var(--recipe-font); width: 60%; margin-top: 16px;
-                                    font-size: x-large; margin-bottom: 6px; background-color:transparent;">{{post.title}}</button>
+                                    <button>{{post.title}}</button>
                                 </div>
                                 {% comment %}
                                 <a href="{%url 'posts:profile' post.user_pk%}" class="writer_name">{{ post.user }}</a>
                                 {% endcomment %}
                                 {% if post.photo %}
                                 <p>
-                                    <img style="height: 100px; width: 100px" src="{{ post.photo.url }}" />
+                                    <img class="recipe_photo" src="{{ post.photo.url }}" />
                                 </p>
                                 {% endif %}
                                 <div class="recipe_content_bottom">
                                     <div class="like_container">
-                                        <button id="yellow_color" style=" border: 0" class="like_{{post.id}}" onclick="onClickLike({{post.id}})"><img
-                                            src="{% static 'image/복주머니_빨강.png' %}"
-                                            alt="복주머니"
-                                            style="width: 20px; border: 0" />
+                                        <button id="yellow_color" class="like_{{post.id}}" onclick="onClickLike({{post.id}})">
+                                            <img class="like_img" src="{% static 'image/복주머니_빨강.png' %}" alt="복주머니"/>
                                         </button>
                                         <div> 
-                                            <span></span>좋아요 개수: <span class="like_dislike_{{post.id}}">{{post.number}}</span>
+                                            <span>좋아요 개수: </span>
+                                            <span class="like_dislike_{{post.id}}">{{post.number}}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="ingredient_container">
                                     {%for ele in post.ingredientList%}
-                                    <div class="one_ingredient" style="font-weight: 600">{{ele}}</div>
+                                    <div class="one_ingredient">{{ele}}</div>
                                     {%endfor%}
                                 </div>
                             </div>
                         {% else %}
                             <div class="recipe_content" onclick="onClickDetail({{post.id}})" > 
-                                <button style="border: 0; position: absolute;"
-                                    class="store_{{post.id}}" onclick="onClickStore({{post.id}})">
+                                <button class="store_{{post.id}}" onclick="onClickStore({{post.id}})">
                                     <i class="fa-solid fa-bookmark">
                                         <div class="store_or_not_{{post.id}}" id="store_text">찜하기</div>
                                     </i>
                                 </button>
                                 <div class="recipe_title">
-                                    <button style="font-family: var(--recipe-font); width: 60%; margin-top: 16px;
-                                    font-size: x-large; margin-bottom: 6px; background-color:transparent;">{{post.title}}</button>
+                                    <button>{{post.title}}</button>
                                 </div>
                                 {% comment %}
                                 <a href="{%url 'posts:profile' post.user_pk%}" class="writer_name">{{ post.user }}</a>
                                 {% endcomment %}
                                 {% if post.photo %}
                                 <p>
-                                    <img style="height: 100px; width: 100px" src="{{ post.photo.url }}" />
+                                    <img class="recipe_photo" src="{{ post.photo.url }}" />
                                 </p>
                                 {% endif %}
                                 <div class="recipe_content_bottom">
                                     <div class="like_container">
-                                        <button style=" border: 0" class="like_{{post.id}}" onclick="onClickLike({{post.id}})"><img
-                                            src="{% static 'image/복주머니_빨강.png' %}"
-                                            alt="복주머니"
-                                            style="width: 20px; border: 0" />
+                                        <button class="like_{{post.id}}" onclick="onClickLike({{post.id}})">
+                                            <img class="like_img" src="{% static 'image/복주머니_빨강.png' %}" alt="복주머니"/>
                                         </button>
                                         <div> 
-                                            <span></span>좋아요 개수: <span class="like_dislike_{{post.id}}">{{post.number}}</span>
+                                            <span>좋아요 개수: </span>
+                                            <span class="like_dislike_{{post.id}}">{{post.number}}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="ingredient_container">
                                     {%for ele in post.ingredientList%}
-                                    <div class="one_ingredient" style="font-weight: 600">{{ele}}</div>
+                                    <div class="one_ingredient">{{ele}}</div>
                                     {%endfor%}
                                 </div>
                             </div>
@@ -107,25 +100,24 @@
                             <input type="submit" style="border: 0" class="update" value="수정하기" />
                         </form>
                     </div>
-                    <div style="display:none;"class="writer_name">{{ post.user }}</div>
                 </article>
                 {% endfor %}
                 <br>
-                <div>
+                <div class="pagination">
                     {% if page_obj.has_other_pages %}
-                        <ul style="display:flex; list-style:none;">
+                        <ul>
                             {% if page_obj.has_previous %}
-                            <li style="margin:3px;"><a style="text-decoration:none; color: #575757;" href="?page={{page_obj.previous_page_number}}">&#10094; Prev</a></li>
+                            <li ><a href="?page={{page_obj.previous_page_number}}"> &lsaquo; </a></li>
                             {% endif %}
                             {% for page in custom_range %}
                             {% if page == page_obj.number%}
-                                <li style="margin:3px;"><a style="text-decoration:none; color: var(--main-color-2);" href="?page={{page}}">{{page}}</a></li>
+                                <li id="page_active"><a href="?page={{page}}">{{page}}</a></li>
                             {% else %}
-                                <li style="margin:3px;"><a style="text-decoration:none; color: #575757;" href="?page={{page}}">{{page}}</a></li>
+                                <li ><a href="?page={{page}}">{{page}}</a></li>
                             {% endif%}
                             {% endfor %}
                             {% if page_obj.has_next %}
-                            <li style="margin:3px;"><a style="text-decoration:none; color: #575757;" href="?page={{page_obj.next_page_number}}">Next &#10095; </a></li>
+                            <li ><a href="?page={{page_obj.next_page_number}}"> &rsaquo; </a></li>
                             {% endif %}
                         </ul>
                     {% endif %}
@@ -136,26 +128,25 @@
                 <div class="line_vertical_2"></div>
             </div>
             <div class="scroll_list_container">
-                <div id="list_container" style="width: 40rem; height: 29rem; border-radius: 0.5rem" class="post_detail">
-                </div>
+                <div id="list_container" class="post_detail"></div>
             </div>
         </div>
         {% else %}
         <!-- posts가 없을 때 UI 코드 -->
-    <div class="wrapper">
-        <div class="none_posts">
-            <p>작성한 레시피가 없어요ㅠㅠ</p><br>
-            <p>레시피 작성하러 가보자!</p>
-            <div>
-            <a href="{% url 'posts:create' %}">
-                <img src="/static/image/%EC%B2%B4%ED%81%AC%ED%95%91%ED%81%AC.png" class="check_img">
-                <span>레시피 작성하기</span>
+        <div class="wrapper">
+            <div class="none_posts">
+                <p>작성한 레시피가 없어요ㅠㅠ</p>
+                <br>
+                <p>레시피 작성하러 가보자!</p>
+                <div>
+                    <a href="{% url 'posts:create' %}">
+                        <img src="/static/image/%EC%B2%B4%ED%81%AC%ED%95%91%ED%81%AC.png" class="check_img">
+                        <span>레시피 작성하기</span>
+                    </a>
+                </div>
             </div>
-            </a>
-
         </div>
-    </div>
-    {% endif %}
+        {% endif %}
         <script src="http://code.jquery.com/jquery-latest.js"></script>
         <script>    
             const requestDetail = new XMLHttpRequest();
@@ -207,7 +198,7 @@
                     console.log(comments.length)
                     let div_generate = ``;
                     for (let i = 0; i < ingredientL.length; i++){
-                         div_generate += `<div class="one_ingredient" style="margin-left:1rem">${ingredientL[i]}</div>`;
+                         div_generate += `<div class="one_ingredient">${ingredientL[i]}</div>`;
                     }
                     // let comments_list = ``;
                     // for (let k = 0; k < comment_id_L.length; k++){
@@ -241,7 +232,8 @@
                         else{
                             if(comments[i].user_id__username == post_user){
                                 list_of_comments.innerHTML += `
-                                <div id="${comments[i].id}">${comments[i].user_id__name}(${comments[i].user_id__username})<span class="comment_writer" style="font-size:medium; font-family:var(--sub-font);">글쓴이</span>
+                                <div id="${comments[i].id}">
+                                ${comments[i].user_id__name}(${comments[i].user_id__username})<span class="comment_writer">글쓴이</span>
 
                                 `;
                             }
@@ -249,7 +241,7 @@
                                 list_of_comments.innerHTML += `
                                 <div id="${comments[i].id}">
                                 <div id="${comments[i].id}">
-                                <strong style="font-size:large"><i class="fa-solid fa-user"></i>${comments[i].user_id__name}(${comments[i].user_id__username})</strong>
+                                <strong style="font-size:large"><i class="fa-solid fa-user"></i>  ${comments[i].user_id__name}(${comments[i].user_id__username})</strong>
 
                                 `;
                             }
@@ -266,18 +258,12 @@
                             }
                             if(comments[i].user_id == requestDetail.response.user){
                                 list_of_comments.innerHTML += `
-                                <div style="display: flex;flex-direction: column;flex-wrap: wrap;justify-content: flex-start;">
-                                        <div class="comment_content" style="     font-family: var(--sub-font);
-                                        font-size: large;
-                                        font-weight: 700;">${comments[i].content}</div>
-                                        <div style="display: flex; justify-content:right;">
-                                            <a class="delete_button" onclick="commentDelete('${comments[i].id}');" style="text-decoration: none;
-                                            color: white;
-                                            padding: 10px 20px;
-                                            font-size: large;
-                                            border-radius: 0.5rem; margin-right: 20px; margin-top:10px;">댓글삭제</a>
-                                        </div>
+                                <div class="comment_box">
+                                    <div class="comment_content">${comments[i].content}</div>
+                                    <div class="delete_button_box">
+                                        <a class="delete_button" onclick="commentDelete('${comments[i].id}')">댓글삭제</a>
                                     </div>
+                                </div>
                                 <hr>
                             </div>
                                 <div class='${comments[i].id}'></div>
@@ -286,9 +272,7 @@
                             else{
                                 list_of_comments.innerHTML += `
                                 <div>
-                                    <div class="comment_content" style="     font-family: var(--sub-font);
-                                        font-size: large;
-                                        font-weight: 700;">${comments[i].content}</div>
+                                    <div class="comment_content">${comments[i].content}</div>
                                 </div>
                                 <hr>
                             </div>
@@ -300,51 +284,35 @@
 
                     element1.innerHTML =
                         `
-                            <article class="다른 backgorund color클래스">
-                                <div class="detail_top" style="padding-top: 47px; padding-bottom: 20px">
-                                    <div class="post_title" style="font-size:40px; font-family: var(--recipe-font); margin-left: 1rem; ">${post_title}</div>
-                                    <div class="ingredient_container">` +
-                        div_generate +
-                        `</div>
+                        <article>
+                            <div class="detail_top">
+                                <div class="post_title">${post_title}</div>
+                                <div class="ingredient_container">` + div_generate + `</div>
                             </div>
-                            <pre style="white-space:pre-wrap" class="jomiryo">${post_quantity}</pre>
+                            <pre class="jomiryo">${post_quantity}</pre>
                             <div class="user_who_write">
-                                <i class="fa-sharp fa-regular fa-circle-user" style="with: 8%"></i>
-                                <div class="writer_name" style="font-size: 10px">
-                                    <span>${ post_user }</span><span> (</span><span class = "writer_name" >${post_username}</span><span>)</span>
+                                <i class="fa-sharp fa-regular fa-circle-user"></i>
+                                <span>${ post_user }</span>
+                                <span> (</span>
+                                <span class = "writer_name" >${post_username}</span>
+                                <span>)</span>
                             </div>
+                            <div class="detail_middle">
+                                <p><img src="${photo_url}" /></p>
+                                <pre class="post_content">${post_content}</pre>
                             </div>
-                            <div class="detail_middle" style="margin-bottom:1.5rem">
-                                <p>
-                                    <img src="${photo_url}" />
-                                </p>
-                                <pre class="post_content" style="overflow:auto; margin-left:16px; white-space:pre-wrap; margin-right: 3%; ">${post_content}</pre>
-                            </div>
-                            <div class="detail_bottom" style=" margin-left: 4%; margin-top: -3rem;">
-                                <div class="like_container" style="float:right; position:relative;">
-                                    <button
-                                        style="border: 0"
-                                        class="like_${post_id}"
-                                        onclick="onClickLike(${post_id})">
-                                        <img
-                                            src="{% static 'image/복주머니(빈칸).png' %}"
-                                            alt="복주머니"
-                                            style="width: 5rem;
-                                            border: 0;
-                                            background-color: #F7F5EB;"
-                                        />
+                            <div class="detail_bottom">
+                                <div class="detail_like_container">
+                                    <button class="like_${post_id}" onclick="onClickLike(${post_id})">
+                                        <img class="detail_like_img" src="{% static 'image/복주머니(빈칸).png' %}" alt="복주머니"/>
                                     </button>
-                                    <div class="like_dislike_${post_id}" style="position: absolute; margin-top: 37px;color: saddlebrown;"> ${post_number}</div>
+                                    <span class="like_dislike_${post_id}"> ${post_number}</span>
                                 </div>
-                                <div class="post_created" style="font-size:medium; margin-top:2.5rem;">${post_created.slice(2, 10)}</div>
-                                <div class="comment_main" style="width: 20rem; float:right; margin-top:2rem;">
+                                <div class="created_date">${post_created.slice(2, 10)}</div>
+                                <div class="comment_main">
                                     {%csrf_token%}
                                     <div class="comment">
-                                        <textarea class="comment_form_${post_id}"
-                                            id="content_id" 
-                                            cols="30" rows="1" 
-                                            style="width: 17.5rem; background-color: #F7F5EB;" placeholder="댓글을 입력해주세요">
-                                        </textarea>
+                                        <textarea class="comment_form_${post_id}" id="content_id" cols="30" rows="1" placeholder="댓글을 입력해주세요"></textarea>
                                     </div>
                                     <div class="comment_send">
                                         <button onClick="onClickComment(${post_id})" id="comment_write"><i class="fa-regular fa-paper-plane"></i></button>
@@ -353,15 +321,13 @@
                             </div>
                         </article>
                         <input type="hidden" id="comment_writer" value={{request.user}}>
-                            <div id="comment_list${post_id}"  style="margin-top:65px;"></div>
+                            <div id="comment_list${post_id}" style="margin-top: 65px;"></div>
                         </div>
                         <div class="hidden" id="pid">${post_id}<div>`; // 히든으로 만들어야함
-
                         element1.innerHTML += list_of_comments.innerHTML;
                 }
                 }
             };
-        
             
             const onClickLike = (id) => {
                 const url = "/like_ajax/";
@@ -394,7 +360,6 @@
                 }
             };
             
-
             const onClickComment = (pk) => {
                 console.log("hello")
                 var content = $("#content_id").val();
@@ -417,10 +382,10 @@
                             console.log("일치", response)
 
                             $(`#comment_list${pk}`).append(
-                                '<div><div id='+response.comment_id+'><strong style="font-size:large"><i class="fa-solid fa-user"></i>'+response.writer_name+"("+response.comment_writer+")"+'&nbsp;<span>'+response.self_comment+'</span></strong>'+
-                                    '<span class="comment_time" style="font-size: medium; font-family:var(--sub-font);">'+response.created+'</span>'+
-                                    '<div style="display: flex; justify-content: space-between;flex-direction: row; "><div class="comment_content" style="     font-family: var(--sub-font);  font-size: large; font-weight: 700;">'+response.content+
-                                    '</div><div><a class="delete_button" onclick="commentDelete('+response.comment_id+');" style="text-decoration: none; color: white; padding: 10px 20px; font-size: large; border-radius: 0.5rem; margin-right: 20px;">댓글삭제</a></div></div><hr></div><div class='+response.comment_id+'></div>'
+                                '<div><div id='+response.comment_id+'><i class="fa-solid fa-user"></i>'+response.writer_name+"("+response.comment_writer+")"+'&nbsp;<span>'+response.self_comment+'</span>'+
+                                    '<span class="comment_time">'+response.created+'</span>'+
+                                    '<div class="comment_box"><div class="comment_content">'+response.content+
+                                    '</div><div><a class="delete_button" onclick="commentDelete('+response.comment_id+');">댓글삭제</a></div></div><hr></div><div class='+response.comment_id+'></div>'
                             );
                         }
                         else{
