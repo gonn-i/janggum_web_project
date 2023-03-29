@@ -12,6 +12,14 @@
   padding-bottom: 3rem;
 }
 
+#fileName {
+  position: absolute;
+  margin: 2.4rem 5rem 0 -17rem;
+  font-size: medium;
+  color: darkgray;
+  font-family: var(--sub-font);
+}
+
 .recipe_title,
 .ingredient_list,
 .input,
@@ -42,7 +50,16 @@ form {
   line-height: 62px;
 }
 
-#create_main_info_box {
+.recipe_title input {
+  width: 16rem;
+  height: 2.4rem;
+  box-shadow: var(--main-box-shadow);
+  text-align: center;
+  border: solid #dcdcdc 0.1rem;
+  border-radius: 0.5rem;
+}
+
+#create_main_info_box, #update_main_info_box {
   vertical-align: middle;
 }
 
@@ -51,7 +68,7 @@ form {
   justify-content: center;
 }
 
-#btn-container.input {
+#btn-container .input {
   margin-right: 3px;
 }
 
@@ -91,7 +108,7 @@ button img {
   justify-content: center;
 }
 
-.create-button input {
+.create-button input, .update-button input {
   width: 11rem;
   height: 3.5rem;
   background-color: var(--main-color-2);
@@ -105,14 +122,14 @@ button img {
   border-radius: 0.5rem;
 }
 
-#create-btn-container {
+#create-btn-container, #update-btn-container {
   margin-top: 35px;
   margin-bottom: 35px;
   margin-right: 80px;
   margin-left: 10rem;
 }
 
-#create-btn-container input {
+#create-btn-container input, #update-btn-container input {
   background: url("../image/재료판자.png");
   width: 8.5rem;
   height: 3rem;
@@ -135,7 +152,11 @@ input::placeholder {
 #create-btn-container input:-webkit-autofill,
 #create-btn-container input:-webkit-autofill:hover,
 #create-btn-container input:-webkit-autofill:focus,
-#create-btn-container input:-webkit-autofill:active {
+#create-btn-container input:-webkit-autofill:active,
+#update-btn-container input:-webkit-autofill,
+#update-btn-container input:-webkit-autofill:hover,
+#update-btn-container input:-webkit-autofill:focus,
+#update-btn-container input:-webkit-autofill:active {
   background-image: url("../image/재료판자.png");
   border: 0;
   outline: none;
@@ -145,7 +166,11 @@ input::placeholder {
 #create-btn-container input,
 #create-btn-container input::placeholder,
 #create-btn-container input:focus,
-#create-btn-container input:focus::placeholder {
+#create-btn-container input:focus::placeholder,
+#update-btn-container input,
+#update-btn-container input::placeholder,
+#update-btn-container input:focus,
+#update-btn-container input:focus::placeholder {
   color: #fff;
   font-size: smaller;
   font-family: var(--ingredient-font);
@@ -158,6 +183,10 @@ input::placeholder {
   text-align: center;
   border: solid #dcdcdc 0.1rem;
   border-radius: 0.5rem;
+}
+
+#update-btn-container input {
+  margin-bottom: 10px;
 }
 
 textarea::placeholder {
@@ -176,15 +205,33 @@ input::placeholder {
   outline: none;
 }
 
-#create_main_box input {
+textarea {
+  height: 6rem;
+  width: 26rem;
+  margin-bottom: 20px;
+  box-shadow: var(--main-box-shadow);
+  border: solid #dcdcdc 0.1rem;
+  border-radius: 0.5rem;
+}
+
+#create_main_box input, #update_main_box input {
   height: 3rem;
 }
 
-#create_picbutton input {
+#update_main_box input {
+  background: url("../image/입력창 메뉴판.png") no-repeat;
+  box-shadow: var(--main-box-shadow);
+  border: 0;
+  background-color: white;
+}
+
+#create_picbutton input,
+#update_picbutton input {
   background: none;
 }
 
-#create_picbutton .upload-name {
+#create_picbutton .upload-name,
+#update_picbutton .upload-name {
   display: inline-block;
   height: 37px;
   padding: 0 10px;
@@ -195,7 +242,8 @@ input::placeholder {
   border-radius: 10px;
 }
 
-#create_picbutton label {
+#create_picbutton label,
+#update_picbutton label {
   display: inline-block;
   color: #fff;
   vertical-align: middle;
@@ -216,7 +264,14 @@ input::placeholder {
   background-color: var(--main-color-1);
 }
 
-#create_picbutton input[type="file"] {
+#update_picbutton label:hover,
+.update-button input:hover {
+  background-color: var(--main-color-1);
+  padding: 12px;
+}
+
+#create_picbutton input[type="file"],
+#update_picbutton input[type="file"] {
   position: absolute;
   width: 0;
   height: 0;
@@ -230,7 +285,21 @@ label,
   margin-top: 10px;
 }
 
-#create_picbutton {
+.recipe_title input {
+  color: rgb(54, 54, 54);
+  font-family: var(--sub-font);
+  font-weight: 1000;
+}
+
+textarea {
+  color: rgb(54, 54, 54);
+  font-family: var(--sub-font);
+  font-weight: 1000;
+  padding-top: 15px;
+  padding-left: 10px;
+}
+
+#create_picbutton, #update_picbutton {
   margin-top: 2rem;
   margin-right: 2.5rem;
 }
@@ -242,7 +311,7 @@ label,
   margin: 3.5rem 0 0 5rem;
 }
 
-#create-btn-container {
+#create-btn-container, #update-btn-container {
   display: grid;
   grid-template-columns: 10rem 10rem 10rem;
 }
@@ -252,6 +321,14 @@ label,
   flex-direction: row;
   justify-content: center;
 }
+
+#update_pic {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
 
 @media (max-width: 1300px) {
   #create-btn-container {
