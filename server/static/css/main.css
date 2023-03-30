@@ -9,6 +9,9 @@
   justify-content: space-evenly;
 }
 
+/* ------------ */
+/* 왼쪽 section */
+
 #main_section_1 {
   display: flex;
   flex-direction: row;
@@ -39,6 +42,9 @@
   margin-bottom: 1rem;
   text-shadow: var(--main-text-shadow);
 }
+
+/* -------------- */
+/* 가운데 section */
 
 #main_section_2 {
   text-align: center;
@@ -112,7 +118,6 @@
   filter: drop-shadow(var(--main-text-shadow));
 }
 
-
 #main-btn-container input,
 #main-btn-container input::placeholder,
 #main-btn-container input:focus,
@@ -126,6 +131,13 @@
   filter: drop-shadow(var(--main-text-shadow));
 }
 
+.ingredient_error {
+  font-family: var(--sub-font);
+  color: var(--main-color-2);
+  font-size: 1.5rem;
+  border: 0.5rem;
+}
+
 #recipe_search {
   margin-bottom: 2rem;
   margin-top: 2rem;
@@ -136,17 +148,40 @@
   filter: drop-shadow(var(--main-box-shadow));
 }
 
-.ingredient_error {
-  font-family: var(--sub-font);
-  color: var(--main-color-2);
-  font-size: 1.5rem;
-  border: 0.5rem;
+@keyframes search-ani-hover {
+  0% {
+      transform: translate(0, 0);
+  }
+  100% {
+      transform: translate(0, -0.5rem);
+  }
 }
+
+@keyframes search-ani-back {
+  0% {
+      transform: translate(0, -0.5rem);
+  }
+  100% {
+      transform: translate(0, 0);
+  }
+}
+
+#recipe_search:hover, .recipe_view_all:hover, .recipe_view_jang:hover {
+  animation: search-ani-hover 0.5s;
+  animation-fill-mode: forwards;
+}
+
+#recipe_search:not(:hover), .recipe_view_all:not(:hover), .recipe_view_jang:not(:hover) {
+  animation: search-ani-back 0.5s;
+  animation-fill-mode: forwards;
+}
+
+/* -------------- */
+/* 오른쪽 section */
 
 #main_section_3 {
   margin-right: 2rem;
   display: flex;
-
 }
 
 #main_create_btn {
@@ -163,8 +198,6 @@
   filter: drop-shadow(var(--main-text-shadow));
 }
 
-
-
 .check_img {
   width: 12rem;
   height: auto;
@@ -179,6 +212,8 @@
   opacity: 1;
 }
 
+/* ---------- */
+/* 반응형 구현 */
 
 @media (max-width: 1200px) {
   
@@ -389,34 +424,4 @@
   .recipe_view_jang img {
     margin: 0 0 0.5rem 0;
   }
-}
-
-
-@keyframes search-ani-hover {
-  0% {
-      transform: translate(0, 0);
-  }
-  100% {
-      transform: translate(0, -0.5rem);
-  }
-}
-
-@keyframes search-ani-back {
-  0% {
-      transform: translate(0, -0.5rem);
-  }
-  100% {
-      transform: translate(0, 0);
-  }
-}
-
-
-#recipe_search:hover, .recipe_view_all:hover, .recipe_view_jang:hover {
-  animation: search-ani-hover 0.5s;
-  animation-fill-mode: forwards;
-}
-
-#recipe_search:not(:hover), .recipe_view_all:not(:hover), .recipe_view_jang:not(:hover) {
-  animation: search-ani-back 0.5s;
-  animation-fill-mode: forwards;
 }
