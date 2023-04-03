@@ -33,6 +33,14 @@
                 <button class="sort_button" type="submit">정렬</button>
             </form>
         </div>
+        <div class="modal_overlay">
+            <div class="modal_box">
+                <div class="modal_content">
+                    모달 내용입니다.
+                </div>
+                <div class="closeBtn"></div> 
+            </div>
+        <div>
         <div class="both_container">
             <div class="all_recipe_box">
                 {% for post in page_obj %}
@@ -439,6 +447,45 @@
               for(one_ingredient of document.getElementsByClassName('one_ingredient')){
                 one_ingredient.style.backgroundColor = randomIngColor();
               }
+
+            // 화면 크기가 1000px 이하인 경우에만 모달창을 띄우는 함수
+            /* function openModal() {
+                if(matchMedia("screen and (min-width: 1000px)").matches) {
+                    const modal = document.getElementById("modal_overlay")
+                    function modalOn() {
+                        modal.style.display = "flex"
+                    }
+                    function isModalOn() {
+                        return modal.style.display === "flex"
+                    }
+                    function modalOff() {
+                        modal.style.display = "none"
+                    }
+
+                    const openBtn = modal.querySelector('.each_recipe')
+                    openBtn.addEventListener("click", e => {
+                        modalOn();
+                    })
+                    
+                    const closeBtn = modal.querySelector('.closeBtn')
+                    closeBtn.addEventListener("click", e => {
+                        modalOff();
+                    })            
+                };
+                } */
+            
+            {% comment %} if(matchMedia("screen and (min-width: 1000px)").matches){
+             // 모달 띄우기 
+             const modal_box = document.querySelector(".modal_box");
+             const btnOpenPopup = document.querySelector(".each_recipe");
+             const modalContent = document.querySelector("recipe_content");/
+       
+             btnOpenPopup.addEventListener("click", () => {  
+               modal_box.style.display = 'block';
+             });
+             
+            } {% endcomment %}
+
         </script>
         <script
           src="https://kit.fontawesome.com/6fbcf91afd.js"
