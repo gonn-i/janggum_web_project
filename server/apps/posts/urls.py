@@ -24,6 +24,9 @@ urlpatterns = [
     path('like_ajax/', views.like_ajax, name='like_ajax'),
     path('comment/<int:pk>/create/', views.comment_create, name='comment_create'),
     path('comment/<int:pk>/delete/', views.comment_delete, name='comment_delete'),
+    
+    #0330 선재 추가 guide url
+    path('posts/guide',views.guide, name='guide'),
 
     # path('posts/<int:pk>/comments', views.comments_create, name='comments_create'),
     # path('posts/<int:post_pk>/comments/<int:comment_pk>/delete', views.comments_delete, name='comments_delete'),
