@@ -211,7 +211,7 @@ button {
 
 .recipe_photo {
   height: 100px;
-  width: 100px
+  width: 100px;
 }
 
 .like_container {
@@ -258,7 +258,9 @@ button {
   margin-bottom: 1rem;
 }
 
-.delete:hover, .update:hover, .delete_button:hover {
+.delete:hover,
+.update:hover,
+.delete_button:hover {
   background-color: var(--main-color-1);
   cursor: pointer;
   color: white;
@@ -422,7 +424,7 @@ button {
 }
 
 .detail_top .post_title {
-  font-size:40px;
+  font-size: 40px;
   font-family: var(--recipe-font);
   margin-left: 1rem;
 }
@@ -559,7 +561,8 @@ button {
 /* ------------------ */
 /* 레시피 디테일: 댓글 */
 
-#comment_writer, .comment_time {
+#comment_writer,
+.comment_time {
   font-size: medium;
   font-family: var(--sub-font);
 }
@@ -596,6 +599,11 @@ button {
 /* ---------- */
 /* 반응형 구현 */
 
+@media (min-width: 1500px) {
+  .modal_box {
+    display: none;
+  }
+}
 @media (max-width: 1500px) {
   #search_box {
     width: 200px;
@@ -609,6 +617,10 @@ button {
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+
+  .modal_box {
+    display: none;
   }
 }
 
@@ -631,5 +643,71 @@ button {
 
   #sort_box {
     margin-top: 1rem;
+  }
+
+  .modal_box {
+    display: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  #list_container,
+  .line_vertical {
+    display: none;
+  }
+  .all_recipe_box {
+    height: calc(100vh - 250px);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    overflow-y: scroll;
+    overflow-x: none;
+  }
+
+  /* 모달창 주위 검정배경 */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+  }
+  /*모달 내부 */
+  .modal_content {
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    text-align: center;
+  }
+
+  /* 모달창 */
+  .modal__box {
+    position: fixed;
+    top: calc(50vh - 100px);
+    left: calc(50vw - 200px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../image/menu\ board.png");
+    background-repeat: none;
+    background-size: cover;
+    border-radius: 0.5rem;
+    width: 40rem;
+    height: 29rem;
+  }
+}
+
+@media (max-width: 800px) {
+  #list_container,
+  .line_vertical {
+    display: none;
+  }
+  .all_recipe_box {
+    height: calc(100vh - 250px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow-y: scroll;
+    overflow-x: none;
   }
 }
