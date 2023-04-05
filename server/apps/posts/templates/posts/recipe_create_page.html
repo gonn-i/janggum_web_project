@@ -12,7 +12,7 @@
       <button id="add">
         <image src="{% static 'image/더하기버튼_샘플.png'%}" id="add_image"/>
       </button>
-      <button id="delete">삭제 버튼</button>
+      <button id="delete"><i class="fa-solid fa-trash-can"></i></button>
     </div>
     <form action="{% url 'posts:create' %}" method="post" enctype="multipart/form-data">
       <div class="menu_point"><div>
@@ -131,5 +131,6 @@
           });
 
     </script>
+    <script src="https://kit.fontawesome.com/6fbcf91afd.js" crossorigin="anonymous"></script>
   </body>
 </html>

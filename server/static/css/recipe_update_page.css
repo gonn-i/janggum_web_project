@@ -479,3 +479,11 @@ textarea {
   font-size: 1rem;
   color: rgb(217, 108, 18);
 }
+
+/*재료칸 삭제 */
+#delete i {
+  font-size: x-large;
+  color: #ab7b58d4;
+  margin-top: 7rem;
+  margin-left: -11rem;
+}

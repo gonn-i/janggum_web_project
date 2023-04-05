@@ -1,6 +1,6 @@
 @import "base.css";
 
-.ingredient_button{
+.ingredient_button {
   position: absolute;
   left: calc((100% - 634px) / 2 + 573px);
   top: 305px;
@@ -278,7 +278,8 @@ textarea::placeholder {
   color: rgb(217, 108, 18);
 }
 
-.create-button input, .update-button input {
+.create-button input,
+.update-button input {
   width: 11rem;
   height: 3.5rem;
   background-color: var(--main-color-2);
@@ -306,7 +307,8 @@ textarea::placeholder {
     margin-left: 11%;
     margin-right: 11%;
   }
-  #create-btn-container, #update-btn-container {
+  #create-btn-container,
+  #update-btn-container {
     margin-left: 5rem;
   }
 }
@@ -319,7 +321,8 @@ textarea::placeholder {
     margin-left: 6%;
     margin-right: 6%;
   }
-  #create-btn-container, #update-btn-container {
+  #create-btn-container,
+  #update-btn-container {
     margin-left: 2rem;
   }
 }
@@ -360,12 +363,14 @@ textarea::placeholder {
     box-sizing: border-box;
     margin: 10px;
   }
-  #create_pic, #update_pic {
+  #create_pic,
+  #update_pic {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  #create_preview, #update_preview {
+  #create_preview,
+  #update_preview {
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
@@ -457,4 +462,12 @@ textarea::placeholder {
   #create_pic > input {
     margin-left: 1rem;
   }
+}
+
+/*재료칸 삭제 */
+#delete i {
+  font-size: x-large;
+  color: #ab7b58d4;
+  margin-top: 7rem;
+  margin-left: -11rem;
 }
