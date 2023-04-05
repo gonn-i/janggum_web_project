@@ -150,28 +150,32 @@
 
 @keyframes search-ani-hover {
   0% {
-      transform: translate(0, 0);
+    transform: translate(0, 0);
   }
   100% {
-      transform: translate(0, -0.5rem);
+    transform: translate(0, -0.5rem);
   }
 }
 
 @keyframes search-ani-back {
   0% {
-      transform: translate(0, -0.5rem);
+    transform: translate(0, -0.5rem);
   }
   100% {
-      transform: translate(0, 0);
+    transform: translate(0, 0);
   }
 }
 
-#recipe_search:hover, .recipe_view_all:hover, .recipe_view_jang:hover {
+#recipe_search:hover,
+.recipe_view_all:hover,
+.recipe_view_jang:hover {
   animation: search-ani-hover 0.5s;
   animation-fill-mode: forwards;
 }
 
-#recipe_search:not(:hover), .recipe_view_all:not(:hover), .recipe_view_jang:not(:hover) {
+#recipe_search:not(:hover),
+.recipe_view_all:not(:hover),
+.recipe_view_jang:not(:hover) {
   animation: search-ani-back 0.5s;
   animation-fill-mode: forwards;
 }
@@ -221,6 +225,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.question_mark {
+  width: 2rem;
+  height: 2rem;
+  float: right;
+  padding-left: 0.5rem;
 }
 /* ---------- */
 /* 반응형 구현 */
