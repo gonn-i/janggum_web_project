@@ -338,6 +338,14 @@ button {
   text-align: center;
 }
 
+#bookmark_blank {
+  color: #f7f5eb;
+  font-size: 2rem;
+  height: 7px;
+  padding-right: 90px;
+  padding-top: 8px;
+}
+
 /* ----------- */
 /* 페이지네이션 */
 
