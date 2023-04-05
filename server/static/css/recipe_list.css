@@ -604,6 +604,72 @@ button {
   margin-top: 10px;
 }
 
+.none_posts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15rem;
+  width: 100%;
+}
+
+@-webkit-keyframes sparkle {
+  from {
+    background-position: 0% 100%;
+  }
+  to {
+    background-position: 200% 100%;
+  }
+}
+
+@keyframes sparkle {
+  from {
+    background-position: 0% 100%;
+  }
+  to {
+    background-position: 200% 100%;
+  }
+}
+.rainbow {
+  background: white;
+  display: inline-block;
+  padding: 0 2rem 2rem 2rem;
+  border-radius: 1rem;
+  position: relative;
+  margin-top: 2rem;
+}
+.rainbow:before {
+  -webkit-animation: sparkle 4s infinite linear;
+  animation: sparkle 4s infinite linear;
+  background: linear-gradient(
+    90deg,
+    #fe8c00 0%,
+    #ffd209 11%,
+    #ff4800 22%,
+    #fe8c00 33%,
+    #ffd209 44%,
+    #ff4800 55%,
+    #fe8c00 66%,
+    #ffd209 77%,
+    #ff4800 88%,
+    #fe8c00 100%
+  );
+  background-size: 300% 100%;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  filter: blur(0.8rem);
+  z-index: -1;
+  transform: scale(0.99) translateY();
+}
+
+#rainbow_create_btn {
+  padding: 0;
+}
+
 /* ---------- */
 /* 반응형 구현 */
 
@@ -717,5 +783,11 @@ button {
     grid-template-columns: 1fr 1fr;
     overflow-y: scroll;
     overflow-x: none;
+  }
+}
+
+@media (max-width: 600px) {
+  #main_create_btn {
+    margin: 0;
   }
 }
