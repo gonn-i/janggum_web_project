@@ -673,11 +673,12 @@ button {
 /* ---------- */
 /* 반응형 구현 */
 
-@media (min-width: 1500px) {
-  .modal_box {
+@media (min-width: 1001px) {
+  #scroll_list_container_2 {
     display: none;
   }
 }
+
 @media (max-width: 1500px) {
   #search_box {
     width: 200px;
@@ -691,10 +692,6 @@ button {
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-  }
-
-  .modal_box {
-    display: none;
   }
 }
 
@@ -718,10 +715,6 @@ button {
   #sort_box {
     margin-top: 1rem;
   }
-
-  .modal_box {
-    display: none;
-  }
 }
 
 @media (max-width: 1000px) {
@@ -738,10 +731,33 @@ button {
   }
 }
 
-/*모달 css */
+@media (max-width: 800px) {
+  header {
+    width: 100%;
+    position: relative;
+    top: 0;
+    z-index: 2;
+  }
 
-@media (min-width: 1001px) {
-  #scroll_list_container_2 {
-    display: none;
+  .sort_search {
+    position: relative;
+  }
+
+  .all_recipe_box {
+    height: calc(100vh - 250px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow-y: scroll;
+    overflow-x: none;
+  }
+}
+
+@media (max-width: 550px) {
+  .all_recipe_box {
+    height: calc(100vh - 250px);
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow-y: scroll;
+    overflow-x: none;
   }
 }

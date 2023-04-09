@@ -160,8 +160,12 @@ input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-input, input:focus, input::placeholder,
-textarea, textarea:focus, textarea::placeholder {
+input,
+input:focus,
+input::placeholder,
+textarea,
+textarea:focus,
+textarea::placeholder {
   outline: none;
 }
 
@@ -309,9 +313,7 @@ header {
   background-color: var(--main-color-2);
 }
 
-
 @media (max-width: 600px) {
-
   header {
     position: relative;
   }
@@ -320,7 +322,7 @@ header {
     height: 6.5rem;
     width: auto;
   }
-  
+
   .nav_menu_img img {
     height: 6.5rem;
     width: auto;
@@ -357,17 +359,14 @@ header {
     border-left: solid var(--main-color-2) var(--line-size);
     border-bottom: solid var(--main-color-2) var(--line-size);
   } */
-
 }
 
-
-@media (max-width:400px) {
-
+@media (max-width: 400px) {
   .nav_logo img {
     height: 5rem;
     width: auto;
   }
-  
+
   .nav_menu_img img {
     height: 5rem;
     width: auto;
@@ -380,5 +379,4 @@ header {
   .nav_menu_text span {
     font-size: 1.05rem;
   }
-
 }
