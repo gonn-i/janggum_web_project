@@ -727,6 +727,11 @@ def posts_retrieve(request:HttpRequest, pk, *args, **kwargs):
     }
     return render(request, "posts/recipe_search_page_list.html", context=context)
 
+#0330 선재 추가 guide url
+def guide(request):
+    return render(request,'posts/guide.html')
+
+
 from .forms import PostForm
 import json
 from django.http import JsonResponse

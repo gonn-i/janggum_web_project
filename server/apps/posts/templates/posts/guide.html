@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>장금이 요리백서 가이드</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    {% include 'posts/header_base.html' %}
+    <div class="guide_contents">
+      <div id="guide_section_1">
+        <img src="{% static 'image/헤더로고_채운.png' %}" /><Br>
+          장금이 요리백서는 <br>
+          <div> 자유로운 <font color="#df461f"> 요리 레시피 공유 플랫폼</font>입니다</div> <br>
+          <!-- <br> -->
+          자신만의 개성있는 레시피를 직접 등록하고 <br>
+          유저들의 다양한 레시피 또한 탐색해보세요!
+      </div>
+      <div id="guide_section_2">          
+        <div class="recipe_view_all guide_recipe">
+        <a href="{% url 'posts:all_recipe' %}">
+          <img
+            src="{% static 'image/복주머니_빨강.png' %}"
+            alt="복주머니"
+          />
+          <span>전체 레시피 보기</span>
+        </a>
+        <div class="guide_recipe_text">유저들이 작성한 레시피를 조회할 수 있어요!</div>
+
+        </div>
+
+        <div class="arrow_line">
+        <img
+            src="{% static 'image/화살표.png' %}"
+            alt="화살표"
+          />
+        </div>
+      <div class="recipe_view_jang guide_recipe">
+        <a href="{% url 'posts:posts_janggum_list' %}">
+          <img
+            src="{% static 'image/복주머니_노랑.png' %}"
+            alt="복주머니"
+          />
+          <span>장금이 레시피 보기</span>
+        </a>
+        <div class="guide_recipe_text">10개 이상의 좋아요를 받은 레시피는<br>
+          <font color="#df461f">장금이 레시피</font>로 분류돼요!</div>
+
+      </div>
+    </div>
+      <div id="guide_section_3">
+        <form action="/" method="post">
+          <input type="hidden" name="csrfmiddlewaretoken" value="9ttOOZo9JPBwDfGy9BGHMKoUY8mikJ2XrC4VmRcdwIoq0MX6SQBeIvzWJaYRLlA7">
+          <div id="main-btn-container">
+            <input placeholder="재료1" type="" name="search">
+            <input placeholder="재료2" type="" name="search">
+            <input placeholder="재료3" type="" name="search">
+          </div>
+          <div class="ingredient_error"></div>
+          <div id="recipe_search">
+            <input type="image" src="/static/image/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80%EB%A0%88%EC%8B%9C%ED%94%BC%EC%A1%B0%ED%9A%8C.png">
+          </div>
+        </form>
+        
+
+        <div class="arrow_line" id="section3_arrow">
+          <img
+              src="{% static 'image/화살표.png' %}"
+              alt="화살표"
+            />
+        </div>
+
+        <div class="recipe_search_guide">
+          <img src="{% static 'image/레시피조회가이드.png' %}" alt="레시피조회가이드">
+          <div class="recipe_search_guide_text">원하는 재료가 들어가는 레시피를 검색할 수 있어요!</div>
+        </div>
+      </div>
+
+      <div id="guide_section_4">
+        <img src="{% static 'image/커뮤니티가이드.png' %}" alt="커뮤니티가이드">
+         <br> <div class="guide_section_4_2"> <div> 작성된 레시피엔 <font color="#df461f">좋아요</font>와 <font color="#df461f">댓글</font>이 표시돼요!</div>
+        <img src="{% static 'image/찜가이드.png' %}" alt="찜가이드"><br>
+        <div> 마음에 드는 레시피는 <font color="#df461f">찜하기</font>를 통해<br>찜 저장소에서 볼 수 있어요!</div></div>
+      </div>
+
+      <div id="guide_section_5">      
+        <div class="nav_logo">
+        <a href="{% url 'posts:main' %}">
+          <img src="{% static 'image/헤더로고_채운.png' %}" />
+        </a>
+      </div>
+      <div> <br>이제 장금이 요리백서를 이용해볼까요? </div>
+    </div>
+
+
+    </div>
+  </body>
+</html>

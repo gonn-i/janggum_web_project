@@ -129,16 +129,27 @@
         {% else %}
         <!-- posts가 없을 때 UI 코드 -->
         <div class="wrapper">
-            <div class="none_posts">
-                <p>찜한 레시피가 없어잉</p>
+            <div class="none_posts"> 
+                <p>찜한 레시피가 없어요ㅜㅜ</p>
                 <br>
                 <p>레시피 찜하러 가보자!</p>
+                <div class="rainbow">
                 <div class="recipe_view_all" id="none_posts_recipe_view_all">
                     <a href="{% url 'posts:all_recipe' %}">
-                        <img src="/static/image/%EB%B3%B5%EC%A3%BC%EB%A8%B8%EB%8B%88_%EB%B9%A8%EA%B0%95.png" alt="복주머니">
+                        <img src="{% static 'image/복주머니_빨강.png' %}" alt="복주머니">
                         <span>전체 레시피 보기</span>
                     </a>
                 </div>
+                <div class="recipe_view_jang">
+                    <a href="{% url 'posts:posts_janggum_list' %}">
+                      <img
+                        src="{% static 'image/복주머니_노랑.png' %}"
+                        alt="복주머니"
+                      />
+                      <span>장금이 레시피 보기</span>
+                    </a>
+                  </div>
+                </div></div>
             </div>
         </div>
         {% endif %}

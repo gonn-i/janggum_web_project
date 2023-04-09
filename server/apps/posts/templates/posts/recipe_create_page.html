@@ -1,138 +1,136 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>장금이 요리백서</title>
-        {% load static %}
-        <link rel="stylesheet" href="{% static 'css/recipe_create_page.css'%}" />
-        {% include 'posts/header_base.html' %}
-        <div class="bottom">
-            <button id="add">
-              <image
-                src="{% static 'image/더하기버튼_샘플.png'%}"
-                id="add_image"
-              />
-            </button>
-          </div>
-          <button id="delete">삭제 버튼</button>
-          <form action="{% url 'posts:create' %}" method="post" enctype="multipart/form-data" style="    border: 74px solid #ae8767ab;">
-            <span class="menu_point"><span>
-              {% csrf_token %}
-              <div id="create_main_info_box">
-                  <div class="recipe_title">
-                      <div>레시피 제목을 입력하세요<span class="disnone">:</span></div>
-                      <input name="title" placeholder="레시피 제목" />
-                  </div>
-                  <div id="create-btn-container">
-                      <input id="ingredient1" name="ingredient[]" list="ingredient_list" placeholder="재료1" onkeyup="noSpace(this);" />
-                      {% comment %} <datalist id="ingredient_list">
-                          {%for ele in ingredientList %}
-                          <option>{{ele}}</option>
-                          {%endfor%}
-                      </datalist> {% endcomment %}
-                      <input id="ingredient2" name="ingredient[]" list="ingredient_list" placeholder="재료2" onkeyup="noSpace(this);" />
-                      {% comment %} <datalist id="ingredient_list">
-                          {%for ele in ingredientList %}
-                          <option>{{ele}}</option>
-                          {%endfor%}
-                      </datalist> {% endcomment %}
-                      <input id="ingredient3" name="ingredient[]" list="ingredient_list" placeholder="재료3" onkeyup="noSpace(this);" />
-                      {% comment %} <datalist id="ingredient_list">
-                          {%for ele in ingredientList %}
-                          <option>{{ele}}</option>
-                          {%endfor%}
-                      </datalist> {% endcomment %}
-                  </div>
-                  <datalist id="ingredient_list">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>장금이 요리백서</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/create_update.css'%}" />
+    {% include 'posts/header_base.html' %}
+    <div class="ingredient_button">
+      <button id="add">
+        <image src="{% static 'image/더하기버튼_샘플.png'%}" id="add_image"/>
+      </button>
+      <button id="delete"><i class="fa-solid fa-trash-can"></i></button>
+    </div>
+    <form action="{% url 'posts:create' %}" method="post" enctype="multipart/form-data">
+      <div class="menu_point"><div>
+        {% csrf_token %}
+        <div id="create_main_info_box">
+            <div class="recipe_title">
+                <div>레시피 제목을 입력하세요<span class="disnone">:</span></div>
+                <input name="title" placeholder="레시피 제목" />
+            </div>
+            <div id="create-btn-container">
+                <input id="ingredient1" name="ingredient[]" list="ingredient_list" placeholder="재료1" onkeyup="noSpace(this);" />
+                {% comment %} <datalist id="ingredient_list">
                     {%for ele in ingredientList %}
                     <option>{{ele}}</option>
                     {%endfor%}
-                </datalist>
-                  <br />
-                  <div id="create_pic">
-                    {% comment %} 백엔드 input {% endcomment %}
-                    <input type="file" name="photo" onchange="readURL(this);" accept=".jpg, .jpeg, .png" />
-                    {% comment %} 프론트엔드 input {% endcomment %}
-                      <img id="create_preview" />
-                  </div>
-              </div>
-              {% comment %}
-              <textarea name="content" placeholder="재료1 정량"></textarea>
-              <textarea name="content" placeholder="재료2 정량"></textarea>
-              <textarea name="content" placeholder="재료3 정량"></textarea><br /><br />
-              {% endcomment %}
-              <textarea name="content" placeholder="레시피 소개 내용"></textarea>
-              {% comment %} <textarea name="ingredient_quantity" placeholder="재료의 양과 사용되는 조미료를 간단하게 적어주세요"></textarea> {% endcomment %}
+                </datalist> {% endcomment %}
+                <input id="ingredient2" name="ingredient[]" list="ingredient_list" placeholder="재료2" onkeyup="noSpace(this);" />
+                {% comment %} <datalist id="ingredient_list">
+                    {%for ele in ingredientList %}
+                    <option>{{ele}}</option>
+                    {%endfor%}
+                </datalist> {% endcomment %}
+                <input id="ingredient3" name="ingredient[]" list="ingredient_list" placeholder="재료3" onkeyup="noSpace(this);" />
+                {% comment %} <datalist id="ingredient_list">
+                    {%for ele in ingredientList %}
+                    <option>{{ele}}</option>
+                    {%endfor%}
+                </datalist> {% endcomment %}
+            </div>
+            <datalist id="ingredient_list">
+              {%for ele in ingredientList %}
+              <option>{{ele}}</option>
+              {%endfor%}
+          </datalist>
+            <br />
+            <div id="create_pic">
+              {% comment %} 백엔드 input {% endcomment %}
+              <input type="file" name="photo" onchange="readURL(this);" accept=".jpg, .jpeg, .png" />
+              {% comment %} 프론트엔드 input {% endcomment %}
+                <img id="create_preview" />
+            </div>
+        </div>
+        {% comment %}
+        <textarea name="content" placeholder="재료1 정량"></textarea>
+        <textarea name="content" placeholder="재료2 정량"></textarea>
+        <textarea name="content" placeholder="재료3 정량"></textarea><br /><br />
+        {% endcomment %}
+        <textarea name="content" placeholder="레시피 소개 내용"></textarea>
+        {% comment %} <textarea name="ingredient_quantity" placeholder="재료의 양과 사용되는 조미료를 간단하게 적어주세요"></textarea> {% endcomment %}
+        
+        <textarea name="ingredient_quantity" placeholder="재료의 양과 사용되는 조미료를 간단하게 적어주세요 (공백포함 최대 30자)" id="myTextarea" maxlength="30"></textarea>
+        <div id="output"></div>
+        <div id="charCount"></div>
+
+        <div class="create-button">
+            <input type="submit" value="레시피 저장" />
+        </div>
+    </form>
+
+    <script>
+              const $addBtn = document.getElementById("add");
+              const $deleteBtn = document.getElementById("delete");
+              const $btnParent = document.getElementById("create-btn-container");
+              let count = 3;
+
+              $deleteBtn.addEventListener("click", ()=>{
+                if (count > 1){
+                  let target_id = "ingredient" + count;
+                  console.log(target_id);
+                  target = document.getElementById(target_id);
+                  target.remove();
+                  count = count - 1;
+                }
+              });
+
+              $addBtn.addEventListener("click", () => {
+                  if (count < 9){
+                    count =count + 1
+                    let template = `
+                    <input " name="ingredient[]" list="ingredient_list" placeholder="재료${count}" onkeyup="noSpace(this);" />
+                    `;
+                    const $newBtn = document.createElement("span");
+                    $newBtn.id ="ingredient"+count;
+                    $newBtn.name = "ingredient[]";
+                    $newBtn.list = "ingredient_list";
+                    $newBtn.placeholder = "재료";
+                    $newBtn.innerHTML = template;
+                    $btnParent.appendChild($newBtn);
+                    }
+              });
               
-              <textarea name="ingredient_quantity" placeholder="재료의 양과 사용되는 조미료를 간단하게 적어주세요 (공백포함 최대 30자)" id="myTextarea" maxlength="30"></textarea>
-              <div id="output"></div>
-              <div id="charCount"></div>
 
-              <div class="create-button">
-                  <input type="submit" , value="레시피 저장" />
-              </div>
-          </form>
-  
-          <script>
-                    const $addBtn = document.getElementById("add");
-                    const $deleteBtn = document.getElementById("delete");
-                    const $btnParent = document.getElementById("create-btn-container");
-                    let count = 3;
+        function noSpace(obj){
 
-                    $deleteBtn.addEventListener("click", ()=>{
-                      if (count > 1){
-                        let target_id = "ingredient" + count;
-                        console.log(target_id);
-                        target = document.getElementById(target_id);
-                        target.remove();
-                        count = count - 1;
-                      }
-                    });
+            obj.value = obj.value.trim();
+            console.log(obj.value);
+        }
+        {% comment %} 이미지 미리보기 {% endcomment %}
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+              var reader = new FileReader();
+              reader.onload = function(e) {
+                document.getElementById('create_preview').src = e.target.result;
+              };
+              reader.readAsDataURL(input.files[0]);
+            } else {
+              document.getElementById('create_preview').src = "";
+            }
+        }
+          // 밑으로 레시피 조미료 입력 문자 수 나타내는 코드 //
+          const textarea = document.getElementById("myTextarea");
+          const charCount = document.getElementById("charCount");
+    
+          textarea.addEventListener("input", function() {
+            charCount.innerHTML = `입력된 조미료 문자 수: ${textarea.value.length} /30`;
+          });
 
-                    $addBtn.addEventListener("click", () => {
-                        if (count < 9){
-                          count =count + 1
-                          let template = `
-                          <input " name="ingredient[]" list="ingredient_list" placeholder="재료${count}" onkeyup="noSpace(this);" />
-                          `;
-                          const $newBtn = document.createElement("span");
-                          $newBtn.id ="ingredient"+count;
-                          $newBtn.name = "ingredient[]";
-                          $newBtn.list = "ingredient_list";
-                          $newBtn.placeholder = "재료";
-                          $newBtn.innerHTML = template;
-                          $btnParent.appendChild($newBtn);
-                          }
-                    });
-                    
-  
-              function noSpace(obj){
-  
-                  obj.value = obj.value.trim();
-                  console.log(obj.value);
-              }
-              {% comment %} 이미지 미리보기 {% endcomment %}
-              function readURL(input) {
-                  if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function(e) {
-                      document.getElementById('create_preview').src = e.target.result;
-                    };
-                    reader.readAsDataURL(input.files[0]);
-                  } else {
-                    document.getElementById('create_preview').src = "";
-                  }
-              }
-                // 밑으로 레시피 조미료 입력 문자 수 나타내는 코드 //
-                const textarea = document.getElementById("myTextarea");
-                const charCount = document.getElementById("charCount");
-          
-                textarea.addEventListener("input", function() {
-                  charCount.innerHTML = `입력된 조미료 문자 수: ${textarea.value.length} /30`;
-                });
-
-          </script>
-      </body>
-  </html>
+    </script>
+    <script src="https://kit.fontawesome.com/6fbcf91afd.js" crossorigin="anonymous"></script>
+  </body>
+</html>

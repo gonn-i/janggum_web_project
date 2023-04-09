@@ -1,177 +1,170 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>장금이 요리백서</title>
-        {% load static %}
-        <link rel="stylesheet" href="{% static 'css/recipe_create_page.css' %}" />
-        {% include 'posts/header_base.html' %}
-        <div class="bottom">
-          <button id="add">
-            <image
-              src="{% static 'image/더하기버튼_샘플.png'%}"
-              style="" id="add_image"
-            />
-          </button>
-        </div>
-        <button id="delete">삭제 버튼</button>
-        <form action="{% url 'posts:update' post.pk %}" method="post" enctype="multipart/form-data" style="border: 74px solid #ae8767ab;">
-          <span class="menu_point"><span>
-            {% csrf_token %}
-            <div>
-                <div class="recipe_title">
-                    <div>레시피 제목을 입력하세요:</div>
-                    <input name="title" placeholder="레시피 제목" value="{{post.title}}" />
-                </div>
-                <div id="update-btn-container">
-                  {%for ele in post.ingredientList%}
-                  <input placeholder="재료" name="ingredient[]" list="ingredient_list" value ="{{ele}}" onkeyup="noSpace(this);" />
-                  {%endfor%}
-                </div>
-                <datalist id="ingredient_list">
-                  {%for ele in ingredientList %}
-                  <option>{{ele}}</option>
-                  {%endfor%}
-              </datalist>
-                    {% comment %} <input placeholder="재료" name="ingredient[]" value ="{{post.ingredient}}"/>
-                    <input placeholder="재료" name="ingredient[]" />
-                    <input placeholder="재료" name="ingredient[]" /> {% endcomment %}
-                </div>
-
-
-                {% comment %} 수정중 {% endcomment %}
-                {% comment %} <input placeholder="파일을 선택해 주세요">
-                
-                <label for="file-input" id="id_req  _photo--button">파일 업로드</label> {% endcomment %}
-                {% comment %} <span>기존 파일 이름</span> {% endcomment %}
-                {% comment %} <input style="display:none;" type="file" name="photo"accept=".jpg, .jpeg, .png" onchange="readURL(this);" required="" id="file-input"> {% endcomment %}
-                <input type="hidden" value ="{{photo_url}}" id="photo_url" />
-                <input type="file" id="file-input" name="photo" onchange="readURL(this);" accept=".jpg, .jpeg, .png" style="display:none"/>
-                
-                <div id="update_pic">
-                  <div id="update_picbutton">
-                    <input class="upload-name" />
-                    <label for="file-input">파일찾기</label>
-
-                    <input type="file" id="file-input" name="photo" onchange="readURL(this);" accept=".jpg, .jpeg, .png" />
-                  </div>
-                  <img style="boarder:none; width: 100px" id="update_main_box" src="{{post.photo.url}}"/>
-                </div>
-                <textarea name="content" placeholder="레시피 소개">{{post.content}}</textarea>
-                  <textarea name="ingredient_quantity" placeholder="" id="myTextarea" maxlength="30">{{post.ingredient_quantity}}</textarea>
-              <div id="output"></div>
-              <div id="charCount"></div>
-                
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>장금이 요리백서</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/create_update.css' %}" />
+    {% include 'posts/header_base.html' %}
+    <div class="ingredient_button">
+      <button id="add">
+        <image src="{% static 'image/더하기버튼_샘플.png'%}" id="add_image"/>
+      </button>
+      <button id="delete">삭제 버튼</button>
+    </div>
+    <form action="{% url 'posts:update' post.pk %}" method="post" enctype="multipart/form-data">
+      <div class="menu_point"><div>
+        {% csrf_token %}
+        <div id="#update_main_info_box">
+            <div class="recipe_title">
+                <div>레시피 제목을 입력하세요<span class="disnone">:</span></div>
+                <input name="title" placeholder="레시피 제목" value="{{post.title}}" />
             </div>
+            <div id="update-btn-container">
+              {%for ele in post.ingredientList%}
+              <input placeholder="재료" name="ingredient[]" list="ingredient_list" value ="{{ele}}" onkeyup="noSpace(this);" />
+              {%endfor%}
+            </div>
+            <datalist id="ingredient_list">
+              {%for ele in ingredientList %}
+              <option>{{ele}}</option>
+              {%endfor%}
+          </datalist>
+                {% comment %} <input placeholder="재료" name="ingredient[]" value ="{{post.ingredient}}"/>
+                <input placeholder="재료" name="ingredient[]" />
+                <input placeholder="재료" name="ingredient[]" /> {% endcomment %}
+            </div>
+
+
+            {% comment %} 수정중 {% endcomment %}
+            {% comment %} <input placeholder="파일을 선택해 주세요">
             
-            <div class="update-button">
-                <input type="submit" , value="레시피 저장" />
+            <label for="file-input" id="id_req  _photo--button">파일 업로드</label> {% endcomment %}
+            {% comment %} <span>기존 파일 이름</span> {% endcomment %}
+            {% comment %} <input style="display:none;" type="file" name="photo"accept=".jpg, .jpeg, .png" onchange="readURL(this);" required="" id="file-input"> {% endcomment %}
+            <input type="hidden" value ="{{photo_url}}" id="photo_url" />
+            <input type="file" id="file-input" name="photo" onchange="readURL(this);" accept=".jpg, .jpeg, .png" style="display:none"/>
+            <div id="update_pic">
+              <div id="update_picbutton">
+                <input class="upload-name" />
+                <label for="file-input">파일찾기</label>
+                <input type="file" id="file-input" name="photo" onchange="readURL(this);" accept=".jpg, .jpeg, .png" />
+              </div>
+              <img id="update_preview" src="{{post.photo.url}}"/>
             </div>
-        </form>
-        {% comment %} <div>{{post.photo.url}}</div> {% endcomment %}
-        <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script> 
-        <script>
-          var fileName = $("#file-input").val();
-          console.log(fileName);
-          const $addBtn = document.getElementById("add");
-          const $deleteBtn = document.getElementById("delete");
-          const $btnParent = document.getElementById("update-btn-container");
-          $btnParent.childNodes[1].id = "ingredient1";
-          $btnParent.childNodes[3].id = "ingredient2";
-          $btnParent.childNodes[5].id = "ingredient3";
-          console.log($btnParent.childNodes[1].id);
-          console.log($btnParent.childNodes[3].id);
-          console.log($btnParent.childNodes[5].id);
-          let count = 3;
+            <textarea name="content" placeholder="레시피 소개">{{post.content}}</textarea>
+              <textarea name="ingredient_quantity" placeholder="" id="myTextarea" maxlength="30">{{post.ingredient_quantity}}</textarea>
+          <div id="output"></div>
+          <div id="charCount"></div>
+        </div>
+        <div class="update-button">
+            <input type="submit" value="레시피 저장" />
+        </div>
+    </form>
+    {% comment %} <div>{{post.photo.url}}</div> {% endcomment %}
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script> 
+    <script>
+      var fileName = $("#file-input").val();
+      console.log(fileName);
+      const $addBtn = document.getElementById("add");
+      const $deleteBtn = document.getElementById("delete");
+      const $btnParent = document.getElementById("update-btn-container");
+      $btnParent.childNodes[1].id = "ingredient1";
+      $btnParent.childNodes[3].id = "ingredient2";
+      $btnParent.childNodes[5].id = "ingredient3";
+      console.log($btnParent.childNodes[1].id);
+      console.log($btnParent.childNodes[3].id);
+      console.log($btnParent.childNodes[5].id);
+      let count = 3;
 
-          $deleteBtn.addEventListener("click", ()=>{
+      $deleteBtn.addEventListener("click", ()=>{
 
-            if (count > 1){
-              let target_id = "ingredient" + count;
-              console.log(target_id);
-              target = document.getElementById(target_id);
-              target.remove();
-              count = count - 1;
-            }
-          });
+        if (count > 1){
+          let target_id = "ingredient" + count;
+          console.log(target_id);
+          target = document.getElementById(target_id);
+          target.remove();
+          count = count - 1;
+        }
+      });
 
-          $addBtn.addEventListener("click", () => {
-              if(count < 9){
-                count += 1;
-                let template = `
-                <input name="search_keyword" list="ingredient_list" placeholder="재료${count}" onkeyup="noSpace(this);"/>
-                `;
+      $addBtn.addEventListener("click", () => {
+          if(count < 9){
+            count += 1;
+            let template = `
+            <input name="search_keyword" list="ingredient_list" placeholder="재료${count}" onkeyup="noSpace(this);"/>
+            `;
 
-                const $newBtn = document.createElement("span");
-                $newBtn.id ="ingredient"+count;
-                $newBtn.name = "ingredient[]";
-                $newBtn.list = "ingredient_list";
-                $newBtn.placeholder = "재료";
-                $newBtn.innerHTML = template;
-                $btnParent.appendChild($newBtn);
-              }
-          });
+            const $newBtn = document.createElement("span");
+            $newBtn.id ="ingredient"+count;
+            $newBtn.name = "ingredient[]";
+            $newBtn.list = "ingredient_list";
+            $newBtn.placeholder = "재료";
+            $newBtn.innerHTML = template;
+            $btnParent.appendChild($newBtn);
+          }
+      });
 
-            {% comment %} var fileName = $("#file-input").val();
-            console.log(fileName);
+        {% comment %} var fileName = $("#file-input").val();
+        console.log(fileName);
 
 
-            {% comment %} const fileInput = document.querySelector('input[type="file"]');
+        {% comment %} const fileInput = document.querySelector('input[type="file"]');
 
-            const urlToObject= async()=> {
-                const response = await fetch(image);
-                // here image is url/location of image
-                const blob = await response.blob();
-                const file = new File([blob], 'image.jpg', {type: blob.type});
-                console.log(file);
-              }
-
-            const $file = urlToObject({{post.photo.url}});
-            const dataTransfer = new DataTransfer();
-            dataTransfer.items.add($file);
-            fileInput.files = dataTransfer.files; {% endcomment %}
-
-            // 앞뒤 공백 제거
-            function noSpace(obj){
-
-              obj.value = obj.value.trim();
-              console.log(obj.value);
+        const urlToObject= async()=> {
+            const response = await fetch(image);
+            // here image is url/location of image
+            const blob = await response.blob();
+            const file = new File([blob], 'image.jpg', {type: blob.type});
+            console.log(file);
           }
 
-            {% comment %} 이미지 미리보기 {% endcomment %}
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                  var reader = new FileReader();
-                  reader.onload = function(e) {
-                    document.getElementById('update_preview').src = e.target.result;
-                  };
-                  reader.readAsDataURL(input.files[0]);
-                } else {
-                  document.getElementById('update_preview').src = "";
-                }
-              }
-              
-              document.getElementById('file-input').addEventListener('change', function(){
-                let filename = document.getElementById('fileName');
-                const photo_url = $("#photo_url").val();
-                console.log(photo_url);
-                if(this.files[0] == undefined){
-                  filename.innerText = photo_url;
-                  return;
-                }
-                filename.innerText = this.files[0].name;
-              });
+        const $file = urlToObject({{post.photo.url}});
+        const dataTransfer = new DataTransfer();
+        dataTransfer.items.add($file);
+        fileInput.files = dataTransfer.files; {% endcomment %}
 
-              // 밑으로 레시피 조미료 입력 문자 수 나타내는 코드 //
-              const textarea = document.getElementById("myTextarea");
-              const charCount = document.getElementById("charCount");
-        
-              textarea.addEventListener("input", function() {
-                charCount.innerHTML = `입력된 조미료 문자 수: ${textarea.value.length} /30`;
-              });
+        // 앞뒤 공백 제거
+        function noSpace(obj){
 
-        </script>
-    </body>
+          obj.value = obj.value.trim();
+          console.log(obj.value);
+      }
+
+        {% comment %} 이미지 미리보기 {% endcomment %}
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+              var reader = new FileReader();
+              reader.onload = function(e) {
+                document.getElementById('update_preview').src = e.target.result;
+              };
+              reader.readAsDataURL(input.files[0]);
+            } else {
+              document.getElementById('update_preview').src = "";
+            }
+          }
+          
+          document.getElementById('file-input').addEventListener('change', function(){
+            let filename = document.getElementById('fileName');
+            const photo_url = $("#photo_url").val();
+            console.log(photo_url);
+            if(this.files[0] == undefined){
+              filename.innerText = photo_url;
+              return;
+            }
+            filename.innerText = this.files[0].name;
+          });
+
+          // 밑으로 레시피 조미료 입력 문자 수 나타내는 코드 //
+          const textarea = document.getElementById("myTextarea");
+          const charCount = document.getElementById("charCount");
+    
+          textarea.addEventListener("input", function() {
+            charCount.innerHTML = `입력된 조미료 문자 수: ${textarea.value.length} /30`;
+          });
+
+    </script>
+  </body>
 </html>

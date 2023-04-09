@@ -33,6 +33,14 @@
                 <button class="sort_button" type="submit">정렬</button>
             </form>
         </div>
+        <div class="modal_overlay">
+            <div class="modal_box">
+                <div class="modal_content">
+                    모달 내용입니다.
+                </div>
+                <div class="closeBtn"></div> 
+            </div>
+        <div>
         <div class="both_container">
             <div class="all_recipe_box">
                 {% for post in page_obj %}
@@ -175,9 +183,9 @@
                     const originHTML = element.innerHTML;
                     const text = originHTML;
                     if (store_true == true){
-                        element.innerHTML = `찜해제`;
+                        element.innerHTML = ``;
                     }else{
-                        element.innerHTML = `찜하기`;
+                        element.innerHTML = `<i class="fa-solid fa-bookmark" id="bookmark_blank"></i>`;
                     }
                 }
                 }

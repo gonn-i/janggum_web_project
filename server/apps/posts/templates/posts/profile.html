@@ -138,12 +138,13 @@
                 <p>작성한 레시피가 없어요ㅠㅠ</p>
                 <br>
                 <p>레시피 작성하러 가보자!</p>
-                <div>
-                    <a href="{% url 'posts:create' %}">
-                        <img src="/static/image/%EC%B2%B4%ED%81%AC%ED%95%91%ED%81%AC.png" class="check_img">
-                        <span>레시피 작성하기</span>
-                    </a>
-                </div>
+                <br>
+                <div class="rainbow" id="rainbow_create_btn">
+                <div id="main_create_btn">
+                    <a href="{% url 'posts:create' %}"><span>새 레시피 추가하러 가기</span>
+                      <img src="{% static 'image/체크핑크.png' %}" class="check_img" /></a>
+                      </div>
+                    </div>
             </div>
         </div>
         {% endif %}
