@@ -63,6 +63,8 @@ button {
 #sort_box {
   width: 10rem;
   border: 1px solid #fff;
+  display: flex;
+  flex-direction: row;
 }
 
 #sort_box > select {
@@ -70,6 +72,8 @@ button {
   font-family: var(--sub-font);
   font-size: medium;
   border: 0;
+  height: 31px;
+  margin-right: 10px;
 }
 
 .sort_button {
@@ -605,7 +609,7 @@ button {
   font-size: large;
   border-radius: 0.5rem;
   margin-right: 20px;
-  margin-top: 10px;
+  margin-top: -10px;
 }
 
 .none_posts {
@@ -709,11 +713,14 @@ button {
 
 @media (max-width: 1300px) {
   .sort_search {
-    margin: 2.5rem 0 0 1rem;
-    flex-direction: column;
+    margin: 1.5rem 0px -15px 1rem;
+    flex-direction: row;
     align-items: baseline;
+    inline-size: fit-content;
   }
-
+  .list_title {
+    display: none;
+  }
   .all_recipe_box {
     height: 100%;
     display: grid;
@@ -730,6 +737,12 @@ button {
 }
 
 @media (max-width: 1000px) {
+  .sort_search {
+    margin: 1.5rem 0px -12px 5rem;
+    flex-direction: row;
+    align-items: baseline;
+    inline-size: fit-content;
+  }
   #scroll_list_container_1,
   .line_vertical {
     display: none;
