@@ -238,6 +238,7 @@
 
 #main_guide a {
   color: rgb(86, 84, 80);
+  margin-bottom: 80px;
 }
 
 #main_guide a:hover {
@@ -299,9 +300,48 @@
     position: inherit;
     top: 2rem;
     left: 0rem;
+    margin-top: 35px;
+  }
+  #section3_arrow img {
+    display: none;
+  }
+  #guide_section_2,
+  #guide_section_3,
+  .guide_section_4_2,
+  #guide_section_5,
+  span,
+  .recipe_search_guide_text {
+    font-size: smaller;
+  }
+}
+/* 1000px부터 이용 가이드 모바일형으로 구현 */
+@media (max-width: 1000px) {
+  #guide_section_2,
+  #guide_section_3,
+  .guide_section_4_2,
+  #guide_section_5,
+  span,
+  .recipe_search_guide_text {
+    font-size: smaller;
+  }
+  .guide_recipe_text {
+    font-size: x-large;
+    padding-left: 27px;
+    padding-top: 42px;
+  }
+  .arrow_line img {
+    width: 3rem;
+    margin-left: 6rem;
   }
 }
 
+@media (max-width: 900px) {
+  .guide_recipe_text {
+    font-size: large;
+    padding-left: 27px;
+    padding-top: 42px;
+  }
+}
 @media (max-width: 700px) {
   #main-btn-container {
     width: 36rem;
@@ -329,10 +369,13 @@
   }
 
   .recipe_view_all a,
-  .recipe_view_jang a,
-  #main_create_btn {
+  .recipe_view_jang a {
     margin-top: 1.5rem;
     font-size: var(--main-font-size);
+  }
+
+  #main_create_btn {
+    margin-top: 1.5rme;
   }
 
   .recipe_view_all img,
@@ -456,6 +499,7 @@
   align-content: center;
   align-items: center;
   padding: 2rem 0;
+  font-size: smaller;
 }
 
 #guide_section_1 img {
@@ -507,7 +551,8 @@
 }
 
 .arrow_line img {
-  max-width: 5rem;
+  max-width: 4rem;
+  margin-right: 70px;
   position: absolute;
   filter: drop-shadow(1rem 1rem 0.2rem #4d4a4a);
 }
