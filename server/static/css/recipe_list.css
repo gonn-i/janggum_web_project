@@ -569,6 +569,10 @@ button {
 /* ------------------ */
 /* 레시피 디테일: 댓글 */
 
+.comment_all {
+  background-color: white;
+}
+
 #comment_writer,
 .comment_time {
   font-size: medium;
@@ -668,6 +672,14 @@ button {
 
 #rainbow_create_btn {
   padding: 0;
+}
+
+#scroll_list_container_2 #list_container {
+  width: 100%;
+  position: fixed;
+  left: 5rem;
+  top: 10rem;
+  overflow-x: scroll;
 }
 
 /* ---------- */
