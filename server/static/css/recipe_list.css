@@ -63,6 +63,8 @@ button {
 #sort_box {
   width: 10rem;
   border: 1px solid #fff;
+  display: flex;
+  flex-direction: row;
 }
 
 #sort_box > select {
@@ -70,6 +72,8 @@ button {
   font-family: var(--sub-font);
   font-size: medium;
   border: 0;
+  height: 31px;
+  margin-right: 10px;
 }
 
 .sort_button {
@@ -569,6 +573,10 @@ button {
 /* ------------------ */
 /* 레시피 디테일: 댓글 */
 
+.comment_all {
+  background-color: white;
+}
+
 #comment_writer,
 .comment_time {
   font-size: medium;
@@ -601,7 +609,7 @@ button {
   font-size: large;
   border-radius: 0.5rem;
   margin-right: 20px;
-  margin-top: 10px;
+  margin-top: -10px;
 }
 
 .none_posts {
@@ -670,14 +678,23 @@ button {
   padding: 0;
 }
 
+#scroll_list_container_2 #list_container {
+  width: 100%;
+  position: fixed;
+  left: 5rem;
+  top: 10rem;
+  overflow-x: scroll;
+}
+
 /* ---------- */
 /* 반응형 구현 */
 
-@media (min-width: 1500px) {
-  .modal_box {
+@media (min-width: 1001px) {
+  #scroll_list_container_2 {
     display: none;
   }
 }
+
 @media (max-width: 1500px) {
   #search_box {
     width: 200px;
@@ -692,19 +709,18 @@ button {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
-
-  .modal_box {
-    display: none;
-  }
 }
 
 @media (max-width: 1300px) {
   .sort_search {
-    margin: 2.5rem 0 0 1rem;
-    flex-direction: column;
+    margin: 1.5rem 0px -15px 1rem;
+    flex-direction: row;
     align-items: baseline;
+    inline-size: fit-content;
   }
-
+  .list_title {
+    display: none;
+  }
   .all_recipe_box {
     height: 100%;
     display: grid;
@@ -718,14 +734,16 @@ button {
   #sort_box {
     margin-top: 1rem;
   }
-
-  .modal_box {
-    display: none;
-  }
 }
 
 @media (max-width: 1000px) {
-  #list_container,
+  .sort_search {
+    margin: 1.5rem 0px -12px 5rem;
+    flex-direction: row;
+    align-items: baseline;
+    inline-size: fit-content;
+  }
+  #scroll_list_container_1,
   .line_vertical {
     display: none;
   }
@@ -736,47 +754,20 @@ button {
     overflow-y: scroll;
     overflow-x: none;
   }
-
-  /* 모달창 주위 검정배경 */
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.8);
-  }
-  /*모달 내부 */
-  .modal_content {
-    position: fixed;
-    bottom: 0;
-    top: 0;
-    display: flex;
-    text-align: center;
-  }
-
-  /* 모달창 */
-  .modal__box {
-    position: fixed;
-    top: calc(50vh - 100px);
-    left: calc(50vw - 200px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: url("../image/menu\ board.png");
-    background-repeat: none;
-    background-size: cover;
-    border-radius: 0.5rem;
-    width: 40rem;
-    height: 29rem;
-  }
 }
 
 @media (max-width: 800px) {
-  #list_container,
-  .line_vertical {
-    display: none;
+  header {
+    width: 100%;
+    position: relative;
+    top: 0;
+    z-index: 2;
   }
+
+  .sort_search {
+    position: relative;
+  }
+
   .all_recipe_box {
     height: calc(100vh - 250px);
     display: grid;
@@ -786,8 +777,12 @@ button {
   }
 }
 
-@media (max-width: 600px) {
-  #main_create_btn {
-    margin: 0;
+@media (max-width: 550px) {
+  .all_recipe_box {
+    height: calc(100vh - 250px);
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow-y: scroll;
+    overflow-x: none;
   }
 }

@@ -33,14 +33,6 @@
                 <button class="sort_button" type="submit">정렬</button>
             </form>
         </div>
-        <div class="modal_overlay">
-            <div class="modal_box">
-                <div class="modal_content">
-                    모달 내용입니다.
-                </div>
-                <div class="closeBtn"></div> 
-            </div>
-        <div>
         <div class="both_container">
             <div class="all_recipe_box">
                 {% for post in page_obj %}
@@ -142,14 +134,23 @@
                     {% endif %}
                 </div>
             </div>
+
+
+
             <div class="line_vertical">
                 <div class="line_vertical_1"></div>
                 <div class="line_vertical_2"></div>
             </div>
-            <div class="scroll_list_container">
-                <div id="list_container" class="post_detail"></div>
+            <div class="scroll_list_container" id="scroll_list_container_1">
+                <div id="list_container" class="post_detail">
+                </div>
             </div>
-        </div>  
+            <!-- 모달 -->
+            <div class="scroll_list_container" id="scroll_list_container_2">
+                </div>
+            </div>
+            <!-- 모달 -->
+        </div>
         <script src="http://code.jquery.com/jquery-latest.js"></script>
         <script>    
             const requestDetail = new XMLHttpRequest();
@@ -212,16 +213,21 @@
                     //         <hr>
                     //     </div>`
                     // }
+
+
+
                     let templatetag = "{% if post.id == comment.post_id.id %}".replace("post.id", post_id);
                     let templatetag2 = "{% endif %}";
                     const element1 = document.querySelector(`.post_detail`);
                     const originHTML1 = element1.innerHTML;
 
                     const detail_list = originHTML1;
-                    
+
                     let list_of_comments = document.createElement("div");
                     list_of_comments.id = "more_comments";
 
+
+                        
                     console.log(list_of_comments.id)
                     console.log("postuser", post_user)
 
@@ -264,7 +270,7 @@
                                 <div class="comment_box">
                                     <div class="comment_content">${comments[i].content}</div>
                                     <div class="delete_button_box">
-                                        <a class="delete_button" onclick="commentDelete('${comments[i].id}')">댓글삭제</a>
+                                        <a class="delete_button" onclick="commentDelete('${comments[i].id}')">댓글삭제</i></a>
                                     </div>
                                 </div>
                                 <hr>
@@ -287,7 +293,7 @@
 
                     element1.innerHTML =
                         `
-                        <article>
+                        <article class="recipe_detail">
                             <div class="detail_top">
                                 <div class="post_title">${post_title}</div>
                                 <div class="ingredient_container">` + div_generate + `</div>
@@ -329,8 +335,40 @@
                         <div class="hidden" id="pid">${post_id}<div>`; // 히든으로 만들어야함
                         element1.innerHTML += list_of_comments.innerHTML;
                 }
+                    // vvvvv 반응형 모달 vvvvv
+                    const wide_modal = document.querySelector('.post_detail');
+                    const low_modal = wide_modal.cloneNode(true);
+                    const low_list_container = document.querySelector('#scroll_list_container_2');
+
+                    const oldChild = low_list_container.firstElementChild;
+  
+                    if (oldChild) {
+                        low_list_container.removeChild(oldChild);
+                    };
+                    low_list_container.appendChild(low_modal);
+
+                    document.addEventListener("click", function(event) {
+                        if (event.target !== low_modal && !low_modal.contains(event.target)) {
+                          low_modal.remove();
+                        }
+                      });
+
+                    // 페이지의 width가 1000px 이하인 경우에만 동작합니다.
+                    if (window.innerWidth <= 1000) {
+                    // wide_modal 변수에 할당된 요소 외에 모든 요소를 어둡게 만드는 스타일을 적용합니다.
+                    document.body.style.cssText = 'background-color: rgb(246, 207, 171);';
+
+                    // div 요소를 삭제할 때, 모든 요소의 어둡게 만드는 스타일을 해제합니다.
+                    low_modal.addEventListener('DOMNodeRemovedFromDocument', function () {
+                        document.body.style.cssText = '';
+                    });
+                    }
+
+                    // ^^^^^ 반응형 모달 ^^^^^
                 }
-            };
+            }; 
+
+
             
             const onClickLike = (id) => {
                 const url = "/like_ajax/";
@@ -386,20 +424,20 @@
                             console.log("일치", response)
 
                             $(`#comment_list${pk}`).append(
-                                '<div><div id='+response.comment_id+'><i class="fa-solid fa-user"></i>'+response.writer_name+"("+response.comment_writer+")"+'&nbsp;<span>'+response.self_comment+'</span>'+
+                                '<div class="comment_all"><div id='+response.comment_id+'><i class="fa-solid fa-user"></i>'+response.writer_name+"("+response.comment_writer+")"+'&nbsp;<span>'+response.self_comment+'</span>'+
                                     '<span class="comment_time">'+response.created+'</span>'+
                                     '<div class="comment_box"><div class="comment_content">'+response.content+
-                                    '</div><div><a class="delete_button" onclick="commentDelete('+response.comment_id+');">댓글삭제</a></div></div><hr></div><div class='+response.comment_id+'></div>'
+                                    '</div><div><a class="delete_button" onclick="commentDelete('+response.comment_id+');">댓글삭제</a></div></div><hr></div><div class='+response.comment_id+'></div></div>'
                             );
                         }
                         else{
                             console.log("불일치", response)
                             $(`#comment_list${pk}`).append(
 
-                                '<div><div id='+response.comment_id+'><strong>'+response.writer_name+"("+response.comment_writer+")"+'</strong>'+
+                                '<div class="comment_all"><div id='+response.comment_id+'><strong>'+response.writer_name+"("+response.comment_writer+")"+'</strong>'+
                                 '<span>'+response.created+'</span>'+
                                 '<div><div >'+response.content+
-                                '</div><div ><a onclick="commentDelete('+response.comment_id+');">댓글삭제</a></div></div><hr></div><div class='+response.comment_id+'></div>'
+                                '</div><div ><a onclick="commentDelete('+response.comment_id+');">댓글삭제</a></div></div><hr></div><div class='+response.comment_id+'></div></div>'
                             );
                         }
                         $('#content_id').val("");
@@ -448,43 +486,6 @@
                 one_ingredient.style.backgroundColor = randomIngColor();
               }
 
-            // 화면 크기가 1000px 이하인 경우에만 모달창을 띄우는 함수
-            /* function openModal() {
-                if(matchMedia("screen and (min-width: 1000px)").matches) {
-                    const modal = document.getElementById("modal_overlay")
-                    function modalOn() {
-                        modal.style.display = "flex"
-                    }
-                    function isModalOn() {
-                        return modal.style.display === "flex"
-                    }
-                    function modalOff() {
-                        modal.style.display = "none"
-                    }
-
-                    const openBtn = modal.querySelector('.each_recipe')
-                    openBtn.addEventListener("click", e => {
-                        modalOn();
-                    })
-                    
-                    const closeBtn = modal.querySelector('.closeBtn')
-                    closeBtn.addEventListener("click", e => {
-                        modalOff();
-                    })            
-                };
-                } */
-            
-            {% comment %} if(matchMedia("screen and (min-width: 1000px)").matches){
-             // 모달 띄우기 
-             const modal_box = document.querySelector(".modal_box");
-             const btnOpenPopup = document.querySelector(".each_recipe");
-             const modalContent = document.querySelector("recipe_content");/
-       
-             btnOpenPopup.addEventListener("click", () => {  
-               modal_box.style.display = 'block';
-             });
-             
-            } {% endcomment %}
 
         </script>
         <script
