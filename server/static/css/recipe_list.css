@@ -720,6 +720,9 @@ button {
   #sort_box {
     margin: 1rem 0 1rem 2rem;
   }
+  #left_contatiner {
+    height: calc(100vh - 370px);
+  }
   .all_recipe_box {
     height: 100%;
     display: grid;
@@ -737,6 +740,9 @@ button {
   #scroll_list_container_1,
   .line_vertical {
     display: none;
+  }
+  #left_contatiner {
+    height: calc(100vh - 300px);
   }
   .all_recipe_box {
     -ms-overflow-style: none;

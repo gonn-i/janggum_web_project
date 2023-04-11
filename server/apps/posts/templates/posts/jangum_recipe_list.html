@@ -391,20 +391,14 @@
                     });
                 }
             }
-            let randomIngColor = () => {
-                let color_r = Math.floor(Math.random() * 120 + 80).toString(16);
-                let color_g = Math.floor(Math.random() * 120 + 80).toString(16);
-                let color_b = Math.floor(Math.random() * 120 + 80).toString(16);
-                return `#${color_r+color_g+color_b}`;
-              }
-              
-              for(one_ingredient of document.getElementsByClassName('one_ingredient')){
-                one_ingredient.style.backgroundColor = randomIngColor();
-              }
+            
+            let colorlist = ["#b6d38e","#e0b71f","#a1a9d4","#cbd893","#c95333","#ae6fc1","#a1a9d4","#994d48","#667e69","#a86989","#6a8d7a","#7e7ba4","#db7F40","#4878da","#5ab575"];
+            for(one_ingredient of document.getElementsByClassName('one_ingredient')){
+                let randomNumber = Math.floor(Math.random() * 15);
+                one_ingredient.style.backgroundColor = colorlist[randomNumber];
+            }
+
         </script>
-        <script
-          src="https://kit.fontawesome.com/6fbcf91afd.js"
-          crossorigin="anonymous"
-        ></script>
+        <script src="https://kit.fontawesome.com/6fbcf91afd.js" crossorigin="anonymous"></script>
     </body>
 </html>

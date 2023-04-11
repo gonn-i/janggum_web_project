@@ -14,9 +14,11 @@
         {% csrf_token %} {{ form }}
         <button class="login_btn">Login</button>
       </form>
+      {% comment %} 
       <button class="google_login_btn">
         <a href=" {% provider_login_url 'google' %}">구글 계정으로 로그인</a>
       </button>
+      {% endcomment %} 
       <p></p>
         <button class="signup_btn">
           <a href="{% url 'posts:signup' %}">회원가입</a>
