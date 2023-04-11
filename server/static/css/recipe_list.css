@@ -99,6 +99,19 @@ button {
   justify-content: space-evenly;
 }
 
+#left_contatiner {
+  height: calc(100vh - 300px);
+  overflow-y: scroll;
+  overflow-x: none;
+  -ms-overflow-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+#left_contatiner::-webkit-scrollbar {
+  display: none;
+}
+
 .recipe_back {
   display: flex;
   flex-direction: column;
@@ -271,12 +284,8 @@ button {
 }
 
 .all_recipe_box {
-  height: calc(100vh - 250px);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  overflow-y: scroll;
-  overflow-x: none;
-  -ms-overflow-style: none;
 }
 
 .scroll_list_container {
@@ -333,10 +342,6 @@ button {
   font-weight: 600;
 }
 
-.all_recipe_box::-webkit-scrollbar {
-  display: none;
-}
-
 .one_ingredient {
   display: inline-block;
   text-align: center;
@@ -354,11 +359,9 @@ button {
 /* 페이지네이션 */
 
 .pagination {
-  justify-content: center;
-  display: inline-block;
-  vertical-align: middle;
   display: table;
-  margin-top: 1rem;
+  position: absolute;
+  bottom: 0;
 }
 
 .pagination ul {
