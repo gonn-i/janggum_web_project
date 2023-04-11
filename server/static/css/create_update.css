@@ -8,7 +8,6 @@
 
 .ingredient_button button {
   border: none;
-  background-color: transparent;
   display: flex;
   justify-content: center;
 }
@@ -17,13 +16,20 @@
   position: absolute;
   box-sizing: border-box;
   justify-content: center;
+  top: 6rem;
+  left: -2.7rem;
 }
 
-#add_image {
+#delete {
   position: absolute;
-  border: 0;
-  width: 100px;
-  margin: 3.5rem 0 0 5rem;
+  box-sizing: border-box;
+  justify-content: center;
+  top: 6rem;
+}
+
+#add i, #delete i {
+  font-size: 2.4rem;
+  color: #ab7b58d4;
 }
 
 form {
@@ -300,9 +306,6 @@ textarea::placeholder {
 }
 
 @media (max-width: 1300px) {
-  #add_image {
-    margin-left: 0;
-  }
   form {
     margin-left: 11%;
     margin-right: 11%;
@@ -314,9 +317,6 @@ textarea::placeholder {
 }
 
 @media (max-width: 1110px) {
-  #add_image {
-    margin-left: -2rem;
-  }
   form {
     margin-left: 6%;
     margin-right: 6%;
@@ -327,14 +327,11 @@ textarea::placeholder {
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 870px) {
   .ingredient_button {
     position: relative;
     left: 49%;
     top: 158px;
-  }
-  #add_image {
-    margin-left: 0;
   }
   form {
     margin-left: 3%;
@@ -350,7 +347,7 @@ textarea::placeholder {
   #create-btn-container,
   #update-btn-container {
     box-sizing: border-box;
-    margin: 135px 0 0 0;
+    margin: 100px 0 0 0;
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -388,9 +385,6 @@ textarea::placeholder {
 }
 
 @media (max-width: 650px) {
-  #add_image {
-    margin-top: 6rem;
-  }
   form {
     margin-left: 3%;
     margin-right: 3%;
@@ -462,12 +456,4 @@ textarea::placeholder {
   #create_pic > input {
     margin-left: 1rem;
   }
-}
-
-/*재료칸 삭제 */
-#delete i {
-  font-size: x-large;
-  color: #ab7b58d4;
-  margin-top: 7rem;
-  margin-left: -11rem;
 }

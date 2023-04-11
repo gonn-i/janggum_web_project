@@ -9,9 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/create_update.css'%}" />
     {% include 'posts/header_base.html' %}
     <div class="ingredient_button">
-      <button id="add">
-        <image src="{% static 'image/더하기버튼_샘플.png'%}" id="add_image"/>
-      </button>
+      <button id="add"><i class="fa-solid fa-plus"></i></button>
       <button id="delete"><i class="fa-solid fa-trash-can"></i></button>
     </div>
     <form action="{% url 'posts:create' %}" method="post" enctype="multipart/form-data">
