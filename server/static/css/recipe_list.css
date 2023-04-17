@@ -227,6 +227,8 @@ button {
 .recipe_photo {
   height: 100px;
   width: 100px;
+  border-radius: 1.5rem;
+  box-shadow: 0rem 0rem 1rem rgb(252, 160, 67);
 }
 
 .like_container {

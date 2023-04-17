@@ -354,10 +354,10 @@
 
                     // 페이지의 width가 1000px 이하인 경우에만 동작합니다.
                     if (window.innerWidth <= 1000) {
-                    // wide_modal 변수에 할당된 요소 외에 모든 요소를 어둡게 만드는 스타일을 적용합니다.
+                    // wide_modal 변수에 할당된 요소 외에 body를 코랄색으로 만드는 스타일을 적용합니다.
                     document.body.style.cssText = 'background-color: rgb(246, 207, 171);';
 
-                    // div 요소를 삭제할 때, 모든 요소의 어둡게 만드는 스타일을 해제합니다.
+                    // div 요소를 삭제할 때, body를 코랄색으로 만드는 스타일을 해제합니다.
                     low_modal.addEventListener('DOMNodeRemovedFromDocument', function () {
                         document.body.style.cssText = '';
                     });
@@ -394,6 +394,7 @@
                         }else{
                             const count = Number(num) - 1;
                             element[i].innerHTML = `${count}`;
+
                         }
                     }
 
