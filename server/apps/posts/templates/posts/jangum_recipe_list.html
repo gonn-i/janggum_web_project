@@ -350,10 +350,10 @@
                             console.log("불일치", response)
                             $(`#comment_list${pk}`).append(
 
-                                '<div><div id='+response.comment_id+'><strong>'+response.writer_name+"("+response.comment_writer+")"+'</strong>'+
-                                '<span>'+response.created+'</span>'+
-                                '<div><div >'+response.content+
-                                '</div><div ><a onclick="commentDelete('+response.comment_id+');">댓글삭제</a></div></div><hr></div><div class='+response.comment_id+'></div>'
+                                '<div><div id='+response.comment_id+'><strong style="font-size:large"><i class="fa-solid fa-user"></i>&nbsp;'+ response.writer_name+"("+response.comment_writer+")"+'</strong></div>'+
+                                '<span class="comment_time">'+response.created+'</span>'+
+                                '<div class="comment_box"><div class="comment_content">'+response.content+
+                                '</div><div class="delete_button_box"><a class="delete_button" onclick="commentDelete('+response.comment_id+');">댓글삭제</a></div></div><hr></div><div class='+response.comment_id+'></div>'
                             );
                         }
                         $('#content_id').val("");
