@@ -116,25 +116,25 @@
                     </article>
                     {% endfor %}
                     <br>
-                </div>
-                <div class="pagination">
-                    {% if page_obj.has_other_pages %}
-                        <ul>
-                            {% if page_obj.has_previous %}
-                            <li ><a href="?page={{page_obj.previous_page_number}}"> &lsaquo; </a></li>
-                            {% endif %}
-                            {% for page in custom_range %}
-                            {% if page == page_obj.number%}
-                                <li id="page_active"><a href="?page={{page}}">{{page}}</a></li>
-                            {% else %}
-                                <li ><a href="?page={{page}}">{{page}}</a></li>
-                            {% endif%}
-                            {% endfor %}
-                            {% if page_obj.has_next %}
-                            <li ><a href="?page={{page_obj.next_page_number}}"> &rsaquo; </a></li>
-                            {% endif %}
-                        </ul>
-                    {% endif %}
+                    <div class="pagination">
+                        {% if page_obj.has_other_pages %}
+                            <ul>
+                                {% if page_obj.has_previous %}
+                                <li ><a href="?page={{page_obj.previous_page_number}}"> &lsaquo; </a></li>
+                                {% endif %}
+                                {% for page in custom_range %}
+                                {% if page == page_obj.number%}
+                                    <li id="page_active"><a href="?page={{page}}">{{page}}</a></li>
+                                {% else %}
+                                    <li ><a href="?page={{page}}">{{page}}</a></li>
+                                {% endif%}
+                                {% endfor %}
+                                {% if page_obj.has_next %}
+                                <li ><a href="?page={{page_obj.next_page_number}}"> &rsaquo; </a></li>
+                                {% endif %}
+                            </ul>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
             <div class="line_vertical">
@@ -481,6 +481,25 @@
             for(one_ingredient of document.getElementsByClassName('one_ingredient')){
                 let randomNumber = Math.floor(Math.random() * 15);
                 one_ingredient.style.backgroundColor = colorlist[randomNumber];
+            }
+
+            //헤더 스크롤시 같이 내려가는 
+            var didScroll;
+            // 스크롤시에 사용자가 스크롤했다는 것을 알림 
+            $(window).scroll(function(event){
+                didScroll = true;
+            });
+
+            // hasScrolled()를 실행하고 didScroll 상태를 재설정
+            setInterval(function() {
+                if (didScroll) {
+                    hasScrolled();
+                    didScroll = false;
+                }
+            }, 250);
+
+            function hasScrolled() {
+            // 동작을 구현
             }
 
         </script>
