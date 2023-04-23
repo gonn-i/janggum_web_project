@@ -43,6 +43,7 @@
                                 <div class="recipe_content" id="recipe_janggum_back" onclick="onClickDetail({{post.id}})"> 
                                     <button class="store_{{post.id}}" onclick="onClickStore({{post.id}})">
                                         <i class="fa-solid fa-bookmark">
+                                            
                                             <div class="store_or_not_{{post.id}}" id="store_text">찜하기</div>
                                         </i>
                                     </button>
@@ -174,7 +175,7 @@
                     const originHTML = element.innerHTML;
                     const text = originHTML;
                     if (store_true == true){
-                        element.innerHTML = ``;
+                        element.innerHTML = `<i class="fa-solid fa-bookmark"></i>`;
                     }else{
                         element.innerHTML = `<i class="fa-solid fa-bookmark" id="bookmark_blank"></i>`;
                     }

@@ -228,7 +228,7 @@ button {
   height: 100px;
   width: 100px;
   border-radius: 1.5rem;
-  box-shadow: 0rem 0rem 1rem rgb(252, 160, 67);
+  box-shadow: 0rem 0rem 1rem grey;
 }
 
 .like_container {
@@ -576,6 +576,11 @@ button {
 /* ------------------ */
 /* 레시피 디테일: 댓글 */
 
+.comment_time {
+  margin-top: -5px;
+  font-size: initial;
+}
+
 .comment_all {
   background-color: white;
 }
@@ -608,11 +613,11 @@ button {
   background-color: var(--main-color-2);
   text-decoration: none;
   color: white;
-  padding: 10px 20px;
-  font-size: large;
+  padding: 3px 16px;
+  font-size: initial;
   border-radius: 0.5rem;
   margin-right: 20px;
-  margin-top: -10px;
+  margin-top: -40px;
 }
 
 .none_posts {
