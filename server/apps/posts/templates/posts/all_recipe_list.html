@@ -34,7 +34,7 @@
             </form>
         </div>
         <div class="both_container">
-            <div id="left_contatiner">
+            <div id="left_container">
                 <div class="all_recipe_box">
                     {% for post in page_obj %}
                     <article class="recipe_back"> 
@@ -142,8 +142,7 @@
                 <div class="line_vertical_2"></div>
             </div>
             <div class="scroll_list_container" id="scroll_list_container_1">
-                <div id="list_container" class="post_detail">
-                </div>
+                <div id="list_container" class="post_detail"></div>
             </div>
             <!-- 모달 -->
             <div class="scroll_list_container" id="scroll_list_container_2">
@@ -250,7 +249,7 @@
                                 list_of_comments.innerHTML += `
                                 <div id="${comments[i].id}">
                                 <div id="${comments[i].id}">
-                                <strong style="font-size:large"><i class="fa-solid fa-user"></i>  ${comments[i].user_id__name}(${comments[i].user_id__username})</strong>
+                                <strong style="font-size:large; padding-left:10px;"><i class="fa-solid fa-user"></i>  ${comments[i].user_id__name}(${comments[i].user_id__username})</strong>
 
                                 `;
                             }
@@ -306,6 +305,7 @@
                                 <span class = "writer_name" >${post_username}</span>
                                 <span>)</span>
                             </div>
+                            <div class="created_date_top">${post_created.slice(2, 10)}</div>
                             <div class="detail_middle">
                                 <p><img src="${photo_url}" /></p>
                                 <pre class="post_content">${post_content}</pre>
@@ -317,7 +317,7 @@
                                     </button>
                                     <span class="like_dislike_${post_id}"> ${post_number}</span>
                                 </div>
-                                <div class="created_date">${post_created.slice(2, 10)}</div>
+                                <div class="created_date_bottom">${post_created.slice(2, 10)}</div>
                                 <div class="comment_main">
                                     {%csrf_token%}
                                     <div class="comment">
@@ -330,7 +330,7 @@
                             </div>
                         </article>
                         <input type="hidden" id="comment_writer" value={{request.user}}>
-                            <div id="comment_list${post_id}" style="margin-top: 65px;"></div>
+                            <div id="comment_list${post_id}" style="margin-top: 100px;"></div>
                         </div>
                         <div class="hidden" id="pid">${post_id}<div>`; // 히든으로 만들어야함
                         element1.innerHTML += list_of_comments.innerHTML;
@@ -435,7 +435,7 @@
                             console.log("불일치", response)
                             $(`#comment_list${pk}`).append(
 
-                                '<div><div id='+response.comment_id+'><strong style="font-size:large"><i class="fa-solid fa-user"></i>&nbsp;'+ response.writer_name+"("+response.comment_writer+")"+'</strong></div>'+
+                                '<div><div id='+response.comment_id+'><strong style="font-size:large; padding-left:10px;"><i class="fa-solid fa-user"></i>&nbsp;'+ response.writer_name+"("+response.comment_writer+")"+'</strong></div>'+
                                 '<span class="comment_time">'+response.created+'</span>'+
                                 '<div class="comment_box"><div class="comment_content">'+response.content+
                                 '</div><div class="delete_button_box"><a class="delete_button" onclick="commentDelete('+response.comment_id+');">댓글삭제</a></div></div><hr></div><div class='+response.comment_id+'></div>'

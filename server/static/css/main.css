@@ -217,9 +217,6 @@
   opacity: 1;
 }
 
-/* ------------ */
-/* 가이드 페이지 */
-
 #main_guide {
   position: relative;
   top: 10rem;
@@ -273,6 +270,9 @@
   animation: guide-ani-back 0.5s;
   animation-fill-mode: forwards;
 }
+
+/* ------------ */
+/* 가이드 페이지 */
 
 .guide_contents {
   display: flex;
@@ -356,6 +356,15 @@
   justify-content: space-around;
 }
 
+#section3_arrow {
+  position: absolute;
+  display: flex;
+}
+
+#section3_arrow img {
+  max-width: 5rem;
+}
+
 #recipe_search_capture {
   width: 100rem;
   box-shadow: 0.1rem 0.6rem 1.5rem;
@@ -429,39 +438,9 @@
   background-color: rgba(250, 232, 213, 0.537);
 }
 
-#guide_section_1 {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-content: center;
-  align-items: center;
-  padding: 2rem 0;
-  font-size: smaller;
-}
-
-#guide_section_1 img {
-  width: 15rem;
-  height: 9rem;
-  filter: drop-shadow(var(--header-logo-shadow));
-}
-
-#guide_section_3.arrow_line {
-  max-width: 5rem;
-}
-
 #recipe_search_capture,
 #recipe_list_capture {
   width: 30rem;
-}
-
-#section3_arrow {
-  position: absolute;
-  display: flex;
-}
-
-#section3_arrow img {
-  max-width: 5rem;
 }
 
 .recipe_search_guide {

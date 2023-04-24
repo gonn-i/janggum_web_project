@@ -195,6 +195,7 @@ textarea {
   --sub-color-2: #faf6f6; /* 레시피 배경 (선택 전) */
   --sub-color-2: #f7f5ea; /* 레시피 배경 (선택 후) */
   --jg-color: #ffcd47; /* 장금이 레시피 배경 */
+  --modal-color-1: #f7f5ea; /* 레시피 메뉴판 배경색 */
   --recipe-color-1: #741c13; /* 레시피 이름, 날짜 글씨 */
   --recipe-color-2: #2c2b2b; /* 레시피 설명 글씨 */
   --ingredient-color: #ab7b58; /* 자동완성 선택 시 바뀌는 글자 색상 */

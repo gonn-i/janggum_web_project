@@ -98,17 +98,17 @@ button {
   justify-content: space-evenly;
 }
 
-#left_contatiner {
-  height: calc(100vh - 300px);
+#left_container {
+  height: calc(100vh - 250px);
   overflow-y: scroll;
   overflow-x: none;
-  -ms-overflow-style: none;
   display: flex;
+  -ms-overflow-style: none;
   justify-content: center;
   overflow: unset;
 }
 
-#left_contatiner::-webkit-scrollbar {
+#left_container::-webkit-scrollbar {
   display: none;
 }
 
@@ -293,7 +293,6 @@ button {
 .scroll_list_container {
   height: calc(100vh - 250px);
   overflow-y: scroll;
-  -ms-overflow-style: none;
 }
 
 .scroll_list_container::-webkit-scrollbar {
@@ -429,7 +428,7 @@ button {
 .line_vertical_2 {
   background-color: var(--main-color-1);
   width: var(--line-size);
-  height: 86rem;
+  height: calc(100vh - 15rem);
 }
 
 /* ------------ */
@@ -556,7 +555,11 @@ button {
   color: saddlebrown;
 }
 
-.created_date {
+.created_date_top {
+  display: none;
+}
+
+.created_date_bottom {
   font-size: medium;
   margin: 2.5rem -4rem 0 -3.5rem;
 }
@@ -570,6 +573,7 @@ button {
   border-radius: 10px;
   margin: 2rem 1rem 0 1rem;
   background-color: transparent;
+  position: relative;
 }
 
 #comment_write {
@@ -583,12 +587,23 @@ button {
   border: none;
 }
 
+.comment_send {
+  position: absolute;
+  right: 1px;
+  bottom: 1px;
+}
+
 /* ------------------ */
 /* 레시피 디테일: 댓글 */
+
+.comment_user_icon {
+  padding-left: 10px;
+}
 
 .comment_time {
   margin-top: -5px;
   font-size: initial;
+  padding-left: 10px;
 }
 
 .comment_all {
@@ -603,31 +618,31 @@ button {
 
 .comment_box {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 
 .comment_content {
   font-family: var(--sub-font);
+  width: 85%;
   font-size: large;
   font-weight: 700;
+  padding-left: 10px;
 }
 
 .delete_button_box {
   display: flex;
-  justify-content: right;
+  align-items: center;
+  height: 14px;
+  margin-right: 10px;
 }
 
 .delete_button {
   background-color: var(--main-color-2);
   text-decoration: none;
   color: white;
-  padding: 3px 16px;
-  font-size: initial;
   border-radius: 0.5rem;
-  margin-right: 20px;
-  margin-top: -40px;
+  padding: 3px 12px;
+  font-size: 14px;
 }
 
 .none_posts {
@@ -696,16 +711,26 @@ button {
   padding: 0;
 }
 
-#scroll_list_container_2 #list_container {
-  width: 100%;
+/* --- */
+/* 모달 */
+#scroll_list_container_2 {
   position: fixed;
-  left: 5rem;
-  top: 10rem;
-  overflow-x: scroll;
+  top: 5vh;
+  left: auto;
+  z-index: 4;
+  box-shadow: 0rem 0rem 0.5rem grey;
 }
 
 /* ---------- */
 /* 반응형 구현 */
+
+@media (min-width: 601px) {
+  #left_container {
+    overflow-y: scroll;
+    overflow-x: none;
+    -ms-overflow-style: none;
+  }
+}
 
 @media (min-width: 1001px) {
   #scroll_list_container_2 {
@@ -737,11 +762,7 @@ button {
   #sort_box {
     margin: 1rem 0 1rem 2rem;
   }
-  #left_contatiner {
-    height: calc(100vh - 370px);
-  }
   .all_recipe_box {
-    height: 100%;
     display: grid;
     grid-template-columns: 1fr;
   }
@@ -758,22 +779,32 @@ button {
   .line_vertical {
     display: none;
   }
-  #left_contatiner {
-    height: calc(100vh - 300px);
-  }
   .all_recipe_box {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .all_recipe_box::-webkit-scrollbar {
-    display: none;
-  }
-  .all_recipe_box {
-    height: calc(100vh - 250px);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+  }
+  /* 모달 */
+  .both_container {
+    width: 100vw;
+  }
+  #scroll_list_container_2 {
+    top: 5vh;
+    z-index: 4;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
+  }
+  #scroll_list_container_2 #list_container {
+    width: 40rem;
+    height: 29rem;
+    background: url("../image/menu\ board.png");
+    background-repeat: none;
+    background-size: cover;
+    border-radius: 0.5rem;
+  }
+  #scroll_list_container_2 {
+    height: calc(100vh - 250px);
     overflow-y: scroll;
-    overflow-x: none;
+    -ms-overflow-style: none;
   }
 }
 
@@ -791,18 +822,152 @@ button {
     height: calc(100vh - 250px);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    overflow-y: scroll;
-    overflow-x: none;
   }
+}
+
+@media (max-width: 600px) {
+  /* 모달 */
+  #scroll_list_container_2 {
+    height: 90vh;
+  }
+  #scroll_list_container_2 #list_container {
+    width: 26rem;
+    height: 36rem;
+    background: none;
+    background-color: var(--modal-color-1);
+    border-radius: 0.5rem;
+    border: 1.4rem solid var(--main-color-2);
+    display: block;
+  }
+  .recipe_detail {
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .detail_top {
+    padding-top: 20px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+  }
+  .detail_top .post_title {
+    margin: 0;
+    font-size: 33px;
+  }
+  .detail_top .ingredient_container {
+    padding: 0.4rem;
+    margin: 0.4rem 0.4rem 0 0.4rem;
+    font-size: 15px;
+    width: 90%;
+  }
+  .post_detail .one_ingredient {
+    margin-right: 1rem;
+    width: max-content;
+    padding: 0 7%;
+  }
+  .jomiryo {
+    font-size: 12px;
+    margin-left: 0;
+    margin-top: -1.4rem;
+  }
+  .user_who_write {
+    position: absolute;
+    top: -1.6rem;
+    color: #dcb7b7;
+    margin: 0;
+  }
+  .created_date_bottom {
+    display: none;
+  }
+  .created_date_top {
+    display: block;
+    font-size: 13px;
+    position: absolute;
+    top: -1.6rem;
+    right: 0;
+    color: #dcb7b7;
+    margin: 0;
+  }
+  .detail_middle {
+    margin: 0.4rem;
+    display: block;
+    text-align: center;
+  }
+  .detail_middle img {
+    margin-left: 0;
+    height: 80px;
+    width: auto;
+  }
+  .detail_middle .post_content {
+    margin: 0;
+    padding: 0.4rem;
+    text-align: left;
+    width: auto;
+    height: 13rem;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .detail_bottom {
+    margin: 0.4rem;
+    display: flex;
+    align-items: flex-end;
+  }
+  .detail_like_container {
+    width: 3.4rem;
+    height: 3.4rem;
+  }
+  .detail_like_img {
+    width: 3.4rem;
+    margin: 0;
+  }
+  .detail_like_container span {
+    font-size: 1.4rem;
+    margin-top: 1.3rem;
+  }
+  #content_id {
+    width: 180px;
+  }
+  .comment_main {
+    width: 190px;
+    margin: 0;
+  }
+  #content_id {
+    width: 145px;
+  }
+  #comment_writer, .comment_time {
+    font-size: 12px;
+    line-height: 23px;
+  }
+  .comment_content {
+    width: 78%;
+    font-size: 13px;
+    line-height: 23px;
+  }
+  .delete_button_box {
+    line-height: 12px;
+    margin: 0;
+  }
+  .delete_button {
+    font-size: 10px;
+    margin: 0;
+    padding: 7px 9px;
+  }
+
 }
 
 @media (max-width: 550px) {
   .all_recipe_box {
-    height: calc(100vh - 250px);
     display: grid;
     grid-template-columns: 1fr;
-    overflow-y: scroll;
     overflow-x: none;
+  }
+  /* 모달 */
+  #scroll_list_container_2 #list_container {
+    width: 20rem;
   }
 }
 
