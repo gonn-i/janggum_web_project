@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="{% static 'css/create_update.css' %}" />
     {% include 'posts/header_base.html' %}
     <div class="ingredient_button">
-      <button id="add"><i class="fa-solid fa-plus"></i></button>
-      <button id="delete"><i class="fa-solid fa-trash-can"></i></button>
+      <button id="add"><img src="{% static 'image/더하기.png' %}" id="add_image" /></button>
+      <button id="delete"><img src="{% static 'image/마이너스.png' %}" id="delete_image" /></button>
     </div>
     <form action="{% url 'posts:update' post.pk %}" method="post" enctype="multipart/form-data">
       <div class="menu_point"><div>

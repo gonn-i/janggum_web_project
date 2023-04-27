@@ -17,7 +17,7 @@
   box-sizing: border-box;
   justify-content: center;
   top: 6rem;
-  left: -2.7rem;
+  left: -3.6rem;
 }
 
 #delete {
@@ -25,11 +25,11 @@
   box-sizing: border-box;
   justify-content: center;
   top: 6rem;
+  left: -0.5rem;
 }
 
-#add i, #delete i {
-  font-size: 2.4rem;
-  color: #ab7b58d4;
+#add_image, #delete_image {
+  width: 3rem;
 }
 
 form {
@@ -110,6 +110,7 @@ form {
   margin-left: 10rem;
   display: grid;
   grid-template-columns: 10rem 10rem 10rem;
+  text-align: left;
 }
 
 #create-btn-container input,
@@ -330,7 +331,7 @@ textarea::placeholder {
 @media (max-width: 870px) {
   .ingredient_button {
     position: relative;
-    left: 49%;
+    left: 50%;
     top: 158px;
   }
   form {
