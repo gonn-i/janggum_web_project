@@ -16,10 +16,10 @@
             <div class="list_title">
                 <a href="{% url 'posts:store_recipe_list' %}">레시피 저장소</a>
             </div>
-            <form id="search_box" action="{% url 'posts:store_recipe_list' %}" method="post" style="margin: 0 2rem 0 2rem" enctype="multipart/form-data">
+            <form id="search_box" action="{% url 'posts:store_recipe_list' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <input class="search_input" name="search-name" />
-                <input class="search_button" type="submit" , value="검색" />
+                <input class="search_button" type="submit" value="검색" />
             </form>
         </div>
         <div class="both_container">
