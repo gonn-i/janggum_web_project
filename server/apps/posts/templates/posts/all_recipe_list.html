@@ -43,7 +43,6 @@
                                 <div class="recipe_content" id="recipe_janggum_back" onclick="onClickDetail({{post.id}})"> 
                                     <button class="store_{{post.id}}" onclick="onClickStore({{post.id}})">
                                         <i class="fa-solid fa-bookmark">
-                                            
                                             <div class="store_or_not_{{post.id}}" id="store_text">찜하기</div>
                                         </i>
                                     </button>
@@ -88,7 +87,6 @@
                                     {% comment %}
                                     <a href="{%url 'posts:profile' post.user_pk%}" class="writer_name">{{ post.user }}</a>
                                     {% endcomment %}
-                                    
                                     {% if post.photo %}
                                     <p>
                                         <img class="recipe_photo" src="{{ post.photo.url }}" />
@@ -212,9 +210,6 @@
                     //         <hr>
                     //     </div>`
                     // }
-
-
-
                     let templatetag = "{% if post.id == comment.post_id.id %}".replace("post.id", post_id);
                     let templatetag2 = "{% endif %}";
                     const element1 = document.querySelector(`.post_detail`);
@@ -225,8 +220,6 @@
                     let list_of_comments = document.createElement("div");
                     list_of_comments.id = "more_comments";
 
-
-                        
                     console.log(list_of_comments.id)
                     console.log("postuser", post_user)
 
@@ -349,9 +342,9 @@
 
                     document.addEventListener("click", function(event) {
                         if (event.target !== low_modal && !low_modal.contains(event.target)) {
-                          low_modal.remove();
+                            low_modal.remove();
                         }
-                      });
+                    });
 
                     // 페이지의 width가 1000px 이하인 경우에만 동작합니다.
                     if (window.innerWidth <= 1000) {
@@ -368,8 +361,6 @@
                 }
             }; 
 
-
-            
             const onClickLike = (id) => {
                 const url = "/like_ajax/";
                 requestLike.open("POST", url, true);
