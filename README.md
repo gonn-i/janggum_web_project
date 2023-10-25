@@ -1,15 +1,15 @@
 # janggum
 janggum_project
 
-안녕하세요 강의자님!
-janggume 브랜치로 확인부탁드리겠습니다 감사합니다!! merge backend라고 커밋되었습니다!!
+레시피 공유 웹사이트: 장금이의 요리백서 🍳
 
-![image](https://user-images.githubusercontent.com/98015246/217295725-97138150-8e28-40bd-945d-9b391d9312a5.png)
-![image](https://user-images.githubusercontent.com/98015246/217296088-9708af6e-ae01-4886-8b06-bf0811cb5711.png)
-![image](https://user-images.githubusercontent.com/98015246/217296228-9e4cff2b-e394-4e1d-b3a5-8db3cf3f9ddf.png)
-![image](https://user-images.githubusercontent.com/98015246/217296315-3916cf0b-35f3-4fdc-8fbf-fc304e543654.png)
-![image](https://user-images.githubusercontent.com/98015246/217296531-373742da-2404-4eea-b336-3b064fe60d02.png)
-![image](https://user-images.githubusercontent.com/98015246/217296616-5398771d-de70-4948-8500-dc26807c575c.png)
+![description1](https://github.com/gonn-i/janggum_web_project/assets/121345759/d601e04c-901f-4e7c-a3ea-2e5fe8fb8b85)
+![description2](https://github.com/gonn-i/janggum_web_project/assets/121345759/37b7bd79-bfb2-4448-ac58-cb384415620b)
 
-회원가입 및 로그인 하는 방법입니다!!
-로그인 이후 레시피 crud가 가능합니다!
+내부 페이지 (일부)
+<img width="1454" alt="main_home" src="https://github.com/gonn-i/janggum_web_project/assets/121345759/648b056d-aae1-4e73-8bd5-97745617a5a2">
+
+<img width="1451" alt="recipe_detail" src="https://github.com/gonn-i/janggum_web_project/assets/121345759/bafa6a98-2678-4f1f-b03a-5147dd8dc4d4">
+
+<img width="1441" alt="guide" src="https://github.com/gonn-i/janggum_web_project/assets/121345759/9aab848f-6840-43df-ac99-49331f60c05c">
+
